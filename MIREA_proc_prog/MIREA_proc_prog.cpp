@@ -1,10 +1,12 @@
-﻿#include <iostream> 
-#include <cmath>	
+﻿#define _USE_MATH_DEFINES
+
+#include <iostream> 
+#include <math.h>
 #include <fstream>  //file streams
 #include <string>	//for getline
 #include <sstream>  //string streams
 #include <vector>	//for push_back to array
-//#include <algorithm> //for for_each
+
 
 /*========================================================================
  | FUNC:                                                                 |
@@ -74,6 +76,29 @@ void hw5();
 void test()
 {
 	cout << "Welcome alpha test module\n";
+	//string s = "az AZ"; //65-90 97-122
+	/*
+	for (int i = 48; i <= 57; i++)
+		cout << char(i) << ' ';
+		//0 1 2 3 4 5 6 7 8 9
+	cout << '\n';
+	for (int i = 65; i <= 90; i++)
+		cout << char(i) << ' ';
+	//A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+	cout << '\n';
+	for (int i = 97; i <= 122; i++)
+		cout << char(i) << ' ';
+	//a b c d e f g h i j k l m n o p q r s t u v w x y z
+	cout << '\n';
+		
+	//cout << int(s[0]) << ' ' << int(s[1]) << ' ' << int(s[2]) << ' ' << int(s[3]) << ' ' << int(s[4]) << ' ' << "\n";
+	cout << int('a') - 48 - 7 - 32<< ' ' << int('z') - 55  - 32 << "\n";
+	//cout << int('A') - 55 << ' ' << int('Z') - 55 << "\n";
+	//cout << int('0') << ' ' << int('9') << ' ' << int('1') << ' ' << "\n";
+	*/
+	string s = "10";
+	s += 49;
+	cout << char(48+2) << "\n";
 }
 
 
@@ -147,9 +172,9 @@ int main()
 			break;
 		}
 		default:
-			cout << "Sorry, I don't understand. Please choose something else\n";
-			pause();
 			cls();
+			cout << "Sorry, I don't understand. Please choose something else\n";
+			
 			break;
 		}
 	}
@@ -210,7 +235,7 @@ void hw3()
 			<< "3. Print Me!\n"
 			<< "4. Number Regex\n"
 			<< "5. Letter Sorting\n"
-			<< "0. Quit\n"
+			<< "0. Back\n"
 			<< "> ";
 		cin >> choice;
 		clear();
@@ -219,8 +244,6 @@ void hw3()
 		case 0:
 		{
 			quitInner = true;
-			cout << "Thanks for working!\n";
-			pause();
 			break;
 		}
 		case 1:
@@ -254,6 +277,7 @@ void hw3()
 			break;
 		}
 		default:
+			cls();
 			cout << "Sorry, I don't understand. Please choose something else\n";
 			break;
 		}
@@ -354,15 +378,8 @@ void percent()
 	{
 		r = (p / 100);
 
-		//cout << "r is " << r << "\n";
-
 		mTmp1 = s * r * pow(r + 1, n);
-
-		//cout << "mTmp1 is " << mTmp1 << "\n";
-
 		mTmp1 = mTmp1 / (12 * (pow(r + 1, n) - 1));
-
-		//cout << "mTmp2 is " << mTmp1 << "\n\n";
 
 		if (abs(mTmp1 - m) <= 0.1)
 		{
@@ -489,7 +506,7 @@ void hw4()
 			<< "6. Roman into Arabic\n"
 			<< "7. Matrix Multiply\n"
 			<< "8. Notation Translate\n"
-			<< "0. Quit\n"
+			<< "0. Back\n"
 			<< "> ";
 		cin >> choice;
 		clear();
@@ -498,8 +515,6 @@ void hw4()
 		case 0:
 		{
 			quitInner = true;
-			cout << "Thanks for working!\n";
-			pause();
 			break;
 		}
 		case 1:
@@ -551,6 +566,7 @@ void hw4()
 			break;
 		}
 		default:
+			cls();
 			cout << "Sorry, I don't understand. Please choose something else\n";
 			break;
 		}
@@ -622,9 +638,7 @@ void sumFile()
 	else 
 		cout << "No such file at\n  " << path << "\n";
 	text.close();
-
-	//nums.clear();
-	
+		
 	//read 
 
 	text.open(path, ios::in);
@@ -634,16 +648,12 @@ void sumFile()
 		while (text >> num)
 		{
 			sum += num;
-			//nums.push_back(num);
 		}
 
 		file.close();
 	}
 	else 
 		cout << "No such file at\n  " << path << "\n";
-
-	//for (int i = 0; i < nums.size(); i++)
-	//	sum += nums[i];
 
 	cout << "Sum of nums is " << sum << "\n";
 
@@ -662,30 +672,177 @@ void sign()
 	else if (x > 0) cout << "1\n";
 	else cout << "0\n";
 
+	pause();
+	cls();
+
 }
 
 void area()
 {
+	//By the way, we can use one overloaded function, the behavior of which is determined by counting the given values
+	// 1 for circle, 2 for rectangle, 3 for triangle
+	auto circle = [](int r)
+	{
+		return M_PI * pow(r, 2);
+	};
+	auto rectangle = [](float h, float w)
+	{
+		return h * w;
+	};
+	auto triangle = [](float a, float b, float c)
+	{
+		float p = (a + b + c) / 2;
+		return sqrt(p * (p - a) * (p - b) * (p - c));
+	};
 
+	float a, b, c;
+
+	bool quitArea = false;
+	int choice;
+	while (!quitArea)
+	{
+		cout << "Choose a figure to find area:\n"
+			<< "1. Rectangle\n"
+			<< "2. Triangle\n"
+			<< "3. Circle\n"
+			<< "0. Back\n"
+			<< "> ";
+		cin >> choice;
+		clear();
+		switch (choice)
+		{
+		case 0:
+		{
+			quitArea = true;
+			cls();
+			return;
+		}
+		case 1:
+		{
+			do
+			{
+				cls();
+				cout << "Enter width w\n> ";
+				cin >> a;
+				clear();
+				if (a <= 0)
+				{
+					cout << "Error! Width must be greater than 0!\n";
+					pause();
+				}
+			} while (a <= 0);
+			do
+			{
+				cls();
+				cout << "Enter height h\n> ";
+				cin >> b;
+				clear();
+				if (b <= 0)
+				{
+					cout << "Error! Height must be greater than 0!\n";
+					pause();
+				}
+			} while (b <= 0);
+
+			cout << "Area of rectangle " << a << " x " << b << " is " << rectangle(a, b) << "\n";
+
+			break;
+		}
+		case 2:
+		{
+			do
+			{
+				cls();
+				cout << "Enter side a\n> ";
+				cin >> a;
+				clear();
+				if (a <= 0)
+				{
+					cout << "Error! Side must be greater than 0!\n";
+					pause();
+				}
+			} while (a <= 0);
+			do
+			{
+				cls();
+				cout << "Enter side b\n> ";
+				cin >> b;
+				clear();
+				if (b <= 0)
+				{
+					cout << "Error! Side must be greater than 0!\n";
+					pause();
+				}
+			} while (b <= 0);
+			do
+			{
+				cls();
+				cout << "Enter side c\n> ";
+				cin >> c;
+				clear();
+				if (c <= 0)
+				{
+					cout << "Error! Side must be greater than 0!\n";
+					pause();
+				}
+			} while (c <= 0);
+
+			cout << "Area of triange with sides " << a << ", " << b << ", " << c<< " is " << triangle(a, b, c) << "\n";
+
+			break;
+		}
+		case 3:
+		{
+			do
+			{
+				cls();
+				cout << "Enter radius r\n> ";
+				cin >> c;
+				clear();
+				if (c <= 0)
+				{
+					cout << "Error! Radius must be greater than 0!\n";
+					pause();
+				}
+			} while (c <= 0);
+
+			cout << "Area of circle with radius " << c << " is " << circle(c) << "\n";
+
+			break;
+		}
+		default:
+			cout << "Sorry, I don't understand. Please choose something else\n";
+			break;
+		}
+
+
+		pause();
+		cls();
+	}
+	cls();
 }
 
 void flag()
 {
+	// TODO
+	//	Find out how to draw flag properly
 	cout
-		<< "|* * * * * * OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
-		<< "|* * * * * * :::::::::::::::::::::::::::::::::|\n"
-		<< "|* * * * * * OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
-		<< "|* * * * * * :::::::::::::::::::::::::::::::::|\n"
-		<< "|* * * * * * OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
-		<< "|* * * * * * :::::::::::::::::::::::::::::::::|\n"
-		<< "|OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
-		<< "|:::::::::::::::::::::::::::::::::::::::::::::|\n"
-		<< "|OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
-		<< "|:::::::::::::::::::::::::::::::::::::::::::::|\n"
-		<< "|OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
-		<< "|:::::::::::::::::::::::::::::::::::::::::::::|\n"
-		<< "|OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n";
+		<< "| * * * * * * * * OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
+		<< "| * * * * * * * * :::::::::::::::::::::::::::::::::|\n"
+		<< "| * * * * * * * * OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
+		<< "| * * * * * * * * :::::::::::::::::::::::::::::::::|\n"
+		<< "| * * * * * * * * OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
+		<< "| * * * * * * * * :::::::::::::::::::::::::::::::::|\n"
+		<< "|OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
+		<< "|::::::::::::::::::::::::::::::::::::::::::::::::::|\n"
+		<< "|OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
+		<< "|::::::::::::::::::::::::::::::::::::::::::::::::::|\n"
+		<< "|OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
+		<< "|::::::::::::::::::::::::::::::::::::::::::::::::::|\n"
+		<< "|OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n";
+	
 	pause();
+	cls();
 }
 
 void sinus()
@@ -705,6 +862,121 @@ void matrixMult()
 
 void notation()
 {
+	int base;
+	int symbol;
+	string baseNum;
+	int num10 = 0;
+	vector<int> num;
+
+	bool error = false;
+	do
+	{
+		error = false;
+		do
+		{
+			cout << "Enter base of number\n> ";
+			cin >> base;
+			clear();
+			if (base == 0 || base > 36 || base < -36)
+			{
+				cout << "Error! Incorrect base!\n";
+				pause();
+			}
+		} while (base == 0 || base > 36 || base < -36);
+
+		cout << "Enter your number\n> ";
+		cin >> baseNum;
+
+		// parse and check input
+		for (int i = 0; i < baseNum.size(); i++)
+		{
+			/*
+			for (int i = 48; i <= 57; i++)
+				cout << char(i) << ' ';
+			//0 1 2 3 4 5 6 7 8 9
+			cout << '\n';
+			for (int i = 65; i <= 90; i++)
+				cout << char(i) << ' ';
+			//A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+			cout << '\n';
+			for (int i = 97; i <= 122; i++)
+				cout << char(i) << ' ';
+			//a b c d e f g h i j k l m n o p q r s t u v w x y z
+			cout << '\n';
+			*/
+			symbol = int(baseNum[i]);
+			symbol -= 48;		// get nums
+			if (symbol > 10)	// if a-z
+				symbol -= 7;
+
+			if (symbol > 36)	// if A-Z
+				symbol -= 32;
+
+			//cout << "symbol is " << symbol << "\n";
+			if (symbol < 0 || symbol > abs(base))
+			{
+				cout << "Error! Number out of base notation\n";
+				error = true;
+				pause();
+				cls();
+				break;
+			}
+			else
+				num.push_back(symbol);
+		}
+	} while (error);
+
+	// translate number to base 10
+	for (int i = 0; i < num.size(); i++)
+		num10 += num[i] * pow(base, num.size() - i - 1);
+
+	cout << "In base 10 Number is " << num10 << "\n";
+
+
+	do
+	{
+		cout << "Enter target base of number\n> ";
+		cin >> base;
+		clear();
+		//cout << "//base is " << base << "\n";
+		if (base <= 0 || base > 36)
+		{
+			cout << "Error! Base is incorrect!!!\n";
+			pause();
+		}
+	} while (base <= 0 || base > 36);
+
+
+	// translate to target base
+	baseNum = "";
+
+	
+	while (num10 != 0)
+	{
+		symbol = abs(num10 % abs(base));
+
+		//cout << "num is " << num10 << "; % is " << symbol << "\n";		
+		
+		if (symbol > 10)
+			symbol += 55;
+		else
+			symbol += 48;
+		
+		if (abs(num10) < abs(base))
+		{
+			if (num10 > 10)
+				baseNum = char(num10 + 55) + baseNum;
+			else
+				baseNum = char(num10 + 48) + baseNum;
+		}
+		baseNum = char(symbol) + baseNum;
+		num10 /= base;
+	}
+
+	cout << "Number with base " << base << " is " << baseNum << "\n";
+
+	pause();
+	cls();
 
 }
 
