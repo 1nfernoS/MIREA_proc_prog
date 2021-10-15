@@ -889,7 +889,7 @@ void matrixMult()
 	const int size = 15;
 	int wA, hA, wB, hB;
 	double A[size][size], B[size][size], C[size][size];
-	bool generate = false;
+	bool generate = true;
 
 	// input params of matrix A
 	do
@@ -930,15 +930,16 @@ void matrixMult()
 				A[i][j] = rand() % 100;
 				cout << A[i][j] << ' ';
 			}
+			cout << "\n";
 		}
-		cout << "\n";
+		pause();
 	}
 	else
 	{
 		for (int i = 0; i < hA; i++)
 		{
 			cls();
-			cout << "Enter " << i << "row\n";
+			cout << "Enter " << i << " row\n";
 			for (int j = 0; j < wA; j++)
 			{
 				cin >> A[i][j];
@@ -979,14 +980,15 @@ void matrixMult()
 				B[i][j] = rand() % 100;
 				cout << B[i][j] << ' ';
 			}
+			cout << "\n"; 
 		}
-		cout << "\n";
+		pause();
 	}
 	else
 	{
 		for (int i = 0; i < hB; i++)
 		{
-			cout << "Enter " << i << "row\n";
+			cout << "Enter " << i << " row\n";
 			for (int j = 0; j < wB; j++)
 			{
 				cin >> B[i][j];
@@ -994,6 +996,8 @@ void matrixMult()
 			}
 		}
 	}
+
+	cls();
 
 	// define matrix C
 	for (int i = 0; i < size; i++)
