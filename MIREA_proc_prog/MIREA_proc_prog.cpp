@@ -955,14 +955,14 @@ void matrixMult()
 	{
 		cls();
 		cout << "Enter columns of matrix B\n> ";
-		cin >> wB;
+		cin >> hB;
 		clear();
-		if (wB <= 0)
+		if (hB <= 0)
 		{
 			cout << "Error! Side must be greater than 0!\n";
 			pause();
 		}
-	} while (wB <= 0);
+	} while (hB <= 0);
 
 	// Just to cleaner understand
 	wB = hA;
