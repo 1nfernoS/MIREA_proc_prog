@@ -3,6 +3,12 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+MIREA_proc_prog.sln
+MIREA_proc_prog/MIREA_proc_prog.vcxproj
+MIREA_proc_prog/MIREA_proc_prog.vcxproj.filters
+MIREA_proc_prog/MIREA_proc_prog.vcxproj.user
+
+MIREA_proc_prog/test.txt
 # User-specific files
 *.rsuser
 *.suo

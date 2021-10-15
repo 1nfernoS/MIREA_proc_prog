@@ -2,6 +2,7 @@
 
 #include <iostream> 
 #include <math.h>
+#include <ctime>	//not used but if we want to use random...
 #include <fstream>  //file streams
 #include <string>	//for getline
 #include <sstream>  //string streams
@@ -90,7 +91,7 @@ void test()
 		cout << char(i) << ' ';
 	//a b c d e f g h i j k l m n o p q r s t u v w x y z
 	cout << '\n';
-		
+
 	//cout << int(s[0]) << ' ' << int(s[1]) << ' ' << int(s[2]) << ' ' << int(s[3]) << ' ' << int(s[4]) << ' ' << "\n";
 	cout << int('a') - 48 - 7 - 32<< ' ' << int('z') - 55  - 32 << "\n";
 	//cout << int('A') - 55 << ' ' << int('Z') - 55 << "\n";
@@ -98,7 +99,7 @@ void test()
 	*/
 	string s = "10";
 	s += 49;
-	cout << char(48+2) << "\n";
+	cout << char(48 + 2) << "\n";
 }
 
 
@@ -174,7 +175,6 @@ int main()
 		default:
 			cls();
 			cout << "Sorry, I don't understand. Please choose something else\n";
-			
 			break;
 		}
 	}
@@ -374,14 +374,14 @@ void percent()
 		}
 	} while (n <= 0);
 
-	for (p = 0.1; p < 100; p += 0.1)
+	for (p = 0.01; p < 100; p += 0.01)
 	{
 		r = (p / 100);
 
 		mTmp1 = s * r * pow(r + 1, n);
 		mTmp1 = mTmp1 / (12 * (pow(r + 1, n) - 1));
 
-		if (abs(mTmp1 - m) <= 0.1)
+		if (abs(mTmp1 - m) <= 0.01)
 		{
 			found = true;
 			break;
@@ -635,10 +635,10 @@ void sumFile()
 			text << nums[i] << ' ';
 		}
 	}
-	else 
+	else
 		cout << "No such file at\n  " << path << "\n";
 	text.close();
-		
+
 	//read 
 
 	text.open(path, ios::in);
@@ -652,7 +652,7 @@ void sumFile()
 
 		file.close();
 	}
-	else 
+	else
 		cout << "No such file at\n  " << path << "\n";
 
 	cout << "Sum of nums is " << sum << "\n";
@@ -787,7 +787,7 @@ void area()
 				}
 			} while (c <= 0);
 
-			cout << "Area of triange with sides " << a << ", " << b << ", " << c<< " is " << triangle(a, b, c) << "\n";
+			cout << "Area of triange with sides " << a << ", " << b << ", " << c << " is " << triangle(a, b, c) << "\n";
 
 			break;
 		}
@@ -840,13 +840,42 @@ void flag()
 		<< "|OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
 		<< "|::::::::::::::::::::::::::::::::::::::::::::::::::|\n"
 		<< "|OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n";
-	
+
 	pause();
 	cls();
 }
 
 void sinus()
 {
+	vector <double> ySin;
+	char sign = '*';
+	double thickness = 0.08;
+	double width = 10.0;
+	double step = 0.25;
+
+	// get values of sinus
+	for (double i = -width; i <= width; i += step)
+	{
+		ySin.push_back(sin(i) / 2.0);
+	}
+
+	// drawing
+	for (double plot = 1.0; plot >= -1.0; plot -= 0.05)
+	{
+		for (int i = 0; i < ySin.size(); i++)
+		{
+			if (plot == 0.0)
+				cout << "-";
+			else if (abs(plot - ySin[i]) >= thickness)
+				cout << " ";
+			else
+				cout << sign;
+		}
+		cout << "\n";
+	}
+
+	pause();
+	cls();
 
 }
 
@@ -857,6 +886,126 @@ void romeNumbers()
 
 void matrixMult()
 {
+	const int size = 15;
+	int wA, hA, wB, hB;
+	double A[size][size], B[size][size], C[size][size];
+	bool generate = false;
+
+	// input params of matrix A
+	do
+	{
+		cls();
+		cout << "Enter columns of matrix A\n> ";
+		cin >> wA;
+		clear();
+		if (wA <= 0)
+		{
+			cout << "Error! Side must be greater than 0!\n";
+			pause();
+		}
+	} while (wA <= 0);
+
+	do
+	{
+		cls();
+		cout << "Enter rows of matrix A\n> ";
+		cin >> hA;
+		clear();
+		if (hA <= 0)
+		{
+			cout << "Error! Side must be greater than 0!\n";
+			pause();
+		}
+	} while (hA <= 0);
+
+	// Generating matrix A
+	if (generate)
+	{
+		srand(time(0));
+		//Generate
+		for (int i = 0; i < hA; i++)
+		{
+			for (int j = 0; j < wA; j++)
+			{
+				A[i][j] = rand() % 100;
+				cout << A[i][j] << ' ';
+			}
+		}
+		cout << "\n";
+	}
+	else
+	{
+		for (int i = 0; i < hA; i++)
+		{
+			cls();
+			cout << "Enter " << i << "row\n";
+			for (int j = 0; j < wA; j++)
+			{
+				cin >> A[i][j];
+				clear();
+			}
+		}
+	}
+
+	cls();
+
+
+	// input params of matrix B
+	do
+	{
+		cls();
+		cout << "Enter columns of matrix B\n> ";
+		cin >> wB;
+		clear();
+		if (wB <= 0)
+		{
+			cout << "Error! Side must be greater than 0!\n";
+			pause();
+		}
+	} while (wB <= 0);
+
+	// Just to cleaner understand
+	wB = hA;
+
+	// Generating matrix B
+	if (generate)
+	{
+		srand(time(0));
+		//Generate
+		for (int i = 0; i < hB; i++)
+		{
+			for (int j = 0; j < wB; j++)
+			{
+				B[i][j] = rand() % 100;
+				cout << B[i][j] << ' ';
+			}
+		}
+		cout << "\n";
+	}
+	else
+	{
+		for (int i = 0; i < hB; i++)
+		{
+			cout << "Enter " << i << "row\n";
+			for (int j = 0; j < wB; j++)
+			{
+				cin >> B[i][j];
+				clear();
+			}
+		}
+	}
+
+	// define matrix C
+	for (int i = 0; i < size; i++)
+		for (int j = 0; j < size; j++)
+			C[i][j] = 0;
+
+	/*
+	for (int i = 0; i < 3; i++)
+		for (int j = 0; j < 2; j++)
+			for (int k = 0; k < 4; k++)
+				C[i][j] = C[i][j] + A[i][k] * B[k][j];
+	*/
 
 }
 
@@ -950,18 +1099,18 @@ void notation()
 	// translate to target base
 	baseNum = "";
 
-	
+
 	while (num10 != 0)
 	{
 		symbol = abs(num10 % abs(base));
 
 		//cout << "num is " << num10 << "; % is " << symbol << "\n";		
-		
-		if (symbol > 10)
+
+		if (symbol >= 10)
 			symbol += 55;
 		else
 			symbol += 48;
-		
+		/*
 		if (abs(num10) < abs(base))
 		{
 			if (num10 > 10)
@@ -969,6 +1118,7 @@ void notation()
 			else
 				baseNum = char(num10 + 48) + baseNum;
 		}
+		*/
 		baseNum = char(symbol) + baseNum;
 		num10 /= base;
 	}
