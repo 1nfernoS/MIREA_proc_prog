@@ -888,8 +888,17 @@ void matrixMult()
 {
 	const int size = 15;
 	int wA, hA, wB, hB;
-	double A[size][size], B[size][size], C[size][size];
-	bool generate = true;
+	int A[size][size], B[size][size], C[size][size];
+	bool generate = false;
+
+	// define matrix A, B, C
+	for (int i = 0; i < size; i++)
+		for (int j = 0; j < size; j++)
+		{
+			A[i][j] = 0;
+			B[i][j] = 0;
+			C[i][j] = 0;
+		}
 
 	// input params of matrix A
 	do
@@ -917,22 +926,22 @@ void matrixMult()
 			pause();
 		}
 	} while (hA <= 0);
-
+	
 	// Generating matrix A
 	if (generate)
 	{
+		cls();
 		srand(time(0));
 		//Generate
 		for (int i = 0; i < hA; i++)
 		{
 			for (int j = 0; j < wA; j++)
 			{
-				A[i][j] = rand() % 100;
+				A[i][j] = rand() % 10;
 				cout << A[i][j] << ' ';
 			}
 			cout << "\n";
 		}
-		pause();
 	}
 	else
 	{
@@ -946,27 +955,35 @@ void matrixMult()
 				clear();
 			}
 		}
+		for (int i = 0; i < hA; i++)
+		{
+			for (int j = 0; j < wA; j++)
+			{
+				cout << A[i][j] << ' ';
+			}
+			cout << "\n";
+		}
 	}
 
+	pause();
 	cls();
-
 
 	// input params of matrix B
 	do
 	{
 		cls();
 		cout << "Enter columns of matrix B\n> ";
-		cin >> hB;
+		cin >> wB;
 		clear();
-		if (hB <= 0)
+		if (wB <= 0)
 		{
 			cout << "Error! Side must be greater than 0!\n";
 			pause();
 		}
-	} while (hB <= 0);
+	} while (wB <= 0);
 
 	// Just to cleaner understand
-	wB = hA;
+	hB = wA;
 
 	// Generating matrix B
 	if (generate)
@@ -977,17 +994,17 @@ void matrixMult()
 		{
 			for (int j = 0; j < wB; j++)
 			{
-				B[i][j] = rand() % 100;
+				B[i][j] = rand() % 10;
 				cout << B[i][j] << ' ';
 			}
 			cout << "\n"; 
 		}
-		pause();
 	}
 	else
 	{
 		for (int i = 0; i < hB; i++)
 		{
+			cls();
 			cout << "Enter " << i << " row\n";
 			for (int j = 0; j < wB; j++)
 			{
@@ -995,22 +1012,46 @@ void matrixMult()
 				clear();
 			}
 		}
+		for (int i = 0; i < hA; i++)
+		{
+			for (int j = 0; j < wA; j++)
+			{
+				cout << A[i][j] << ' ';
+			}
+			cout << "\n";
+		}
 	}
 
+	pause();
 	cls();
 
-	// define matrix C
-	for (int i = 0; i < size; i++)
-		for (int j = 0; j < size; j++)
-			C[i][j] = 0;
+	// calculations
+	for (int k = 0; k < wB; k++)
+	{
+		// columns B
+		for (int i = 0; i < hA; i++)
+		{
+			// rows A
+			for (int j = 0; j < wA; j++)
+			{
+				// cells A * B
+				C[i][k] += A[i][j] * B[j][k];
+			}
+		}
+	}
 
-	/*
-	for (int i = 0; i < 3; i++)
-		for (int j = 0; j < 2; j++)
-			for (int k = 0; k < 4; k++)
-				C[i][j] = C[i][j] + A[i][k] * B[k][j];
-	*/
+	// output
+	for (int i = 0; i < hA; i++)
+	{
+		for (int j = 0; j < wB; j++)
+		{
+			cout << C[i][j] << ' ';
+		}
+		cout << "\n";
+	}
 
+	pause();
+	cls();
 }
 
 void notation()
