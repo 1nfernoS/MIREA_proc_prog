@@ -34,7 +34,7 @@
  |                                                                       |
  |-----------------------------------------------------------------------|
  |                                                                       |
- |  ignor           -   for clear input                                  |
+ |  ignore          -   for clear input                                  |
  |  cls             -   short system("cls")                              |
  |  pause           -   short system("pause")                            |
  ========================================================================*/
@@ -881,6 +881,82 @@ void sinus()
 
 void romeNumbers()
 {
+	// get numeric value of symbol
+	auto decrypt = [](char num)
+	{
+		switch (num)
+		{
+		case 'I':
+		case 'i':
+			return 1;
+			break;
+		case 'V':
+		case 'v':
+			return 5;
+			break;
+		case 'X':
+		case 'x':
+			return 10;
+			break;
+		case 'L':
+		case 'l':
+			return 50;
+			break;
+		case 'C':
+		case 'c':
+			return 100;
+			break;
+		case 'D':
+		case 'd':
+			return 500;
+			break;
+		case 'M':
+		case 'm':
+			return 1000;
+			break;
+		default:
+			return 0;
+			break;
+		}
+	};
+
+	char c, per;
+	string s, ch;
+	int new_value, old_value = 0, result = 0;
+	
+	cout << "Enter Romanian Number\n> ";
+	cin >> s;
+
+	for (int i = 0; i <= s.length(); i++)
+	{
+		new_value = decrypt(s[i]);
+		// iv
+		if (new_value < old_value)
+		{
+			result += old_value;
+			old_value = new_value;
+		}
+		else if (new_value > old_value)
+			// v
+			if (old_value == 0)
+				old_value = new_value;
+			// vi
+			else
+			{
+				result += new_value - old_value;
+				old_value = 0;
+			}
+		// ii, xx, ...
+		else if (new_value == old_value)
+		{
+			result += new_value + old_value;
+			old_value = 0;
+		}
+	}
+	cout << "Result is " << result << "\n";
+	
+	pause();
+	cls();
 
 }
 
@@ -1012,11 +1088,12 @@ void matrixMult()
 				clear();
 			}
 		}
-		for (int i = 0; i < hA; i++)
+		cls();
+		for (int i = 0; i < hB; i++)
 		{
-			for (int j = 0; j < wA; j++)
+			for (int j = 0; j < wB; j++)
 			{
-				cout << A[i][j] << ' ';
+				cout << B[i][j] << ' ';
 			}
 			cout << "\n";
 		}
@@ -1124,9 +1201,18 @@ void notation()
 	for (int i = 0; i < num.size(); i++)
 		num10 += num[i] * pow(base, num.size() - i - 1);
 
+	cls();
+
 	cout << "In base 10 Number is " << num10 << "\n";
-
-
+	pause();
+	cls();
+	
+	/*
+		To be correct, we can use negative or big numbers, but it will be more complicated
+		Also we possible can use float base, but operation of % doesn't support floats
+		By the way, translation from negative works properly, 
+		But for base greater than 35(0-Z) writes in decimal with [], so it ould be better to use regex
+	*/
 	do
 	{
 		cout << "Enter target base of number\n> ";
