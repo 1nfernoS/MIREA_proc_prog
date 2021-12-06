@@ -28,6 +28,7 @@
  |      flag        -   task for print American flag                     |
  |      sinus       -   task for print graph of sin(x)                   |
  |      romeNumbers -   task for translate rome numbers into arabic      |
+ |      lcg         -   task for LCG Pseudo RNG                          |
  |      matrixMult  -   task for multiplying matrix                      |
  |      notation    -   task for translate number into different notation|
  |  hw5	            -   interface for 5th homework                       |
@@ -68,6 +69,7 @@ void area();
 void flag();
 void sinus();
 void romeNumbers();
+void lcg();
 void matrixMult();
 void notation();
 
@@ -398,6 +400,7 @@ void percent()
 
 void print()
 {
+	cout << "This is " << __func__ << " module\n";
 	string path = __FILE__;
 	string line;
 	ifstream file(path);
@@ -504,8 +507,9 @@ void hw4()
 			<< "4. American Flag\n"
 			<< "5. Y = Sin(X)\n"
 			<< "6. Roman into Arabic\n"
-			<< "7. Matrix Multiply\n"
-			<< "8. Notation Translate\n"
+			<< "7. LCG Psudo-RandomNumberGenerator\n"
+			<< "8. Matrix Multiply\n"
+			<< "9. Notation Translate\n"
 			<< "0. Back\n"
 			<< "> ";
 		cin >> choice;
@@ -556,10 +560,16 @@ void hw4()
 		case 7:
 		{
 			cls();
-			matrixMult();
+			lcg();
 			break;
 		}
 		case 8:
+		{
+			cls();
+			matrixMult();
+			break;
+		}
+		case 9:
 		{
 			cls();
 			notation();
@@ -575,6 +585,8 @@ void hw4()
 
 void sumFile()
 {
+	cout << "This is " << __func__ << " module\n";
+
 	//Because we need to create file, we will use vector to write all numbers into file
 	vector <int> nums;
 	string path = __FILE__;
@@ -664,6 +676,8 @@ void sumFile()
 
 void sign()
 {
+	cout << "This is " << __func__ << " module\n";
+
 	int x;
 	cout << "Enter your number\n> ";
 	cin >> x;
@@ -679,6 +693,8 @@ void sign()
 
 void area()
 {
+	cout << "This is " << __func__ << " module\n";
+
 	//By the way, we can use one overloaded function, the behavior of which is determined by counting the given values
 	// 1 for circle, 2 for rectangle, 3 for triangle
 	auto circle = [](int r)
@@ -824,6 +840,8 @@ void area()
 
 void flag()
 {
+	cout << "This is " << __func__ << " module\n";
+
 	// TODO
 	//	Find out how to draw flag properly
 	cout
@@ -847,6 +865,8 @@ void flag()
 
 void sinus()
 {
+	cout << "This is " << __func__ << " module\n";
+
 	vector <double> ySin;
 	char sign = '*';
 	double thickness = 0.08;
@@ -881,6 +901,8 @@ void sinus()
 
 void romeNumbers()
 {
+	cout << "This is " << __func__ << " module\n";
+
 	// get numeric value of symbol
 	auto decrypt = [](char num)
 	{
@@ -923,7 +945,7 @@ void romeNumbers()
 	char c, per;
 	string s, ch;
 	int new_value, old_value = 0, result = 0;
-	
+
 	cout << "Enter Romanian Number\n> ";
 	cin >> s;
 
@@ -940,7 +962,7 @@ void romeNumbers()
 			// v
 			if (old_value == 0)
 				old_value = new_value;
-			// vi
+		// vi
 			else
 			{
 				result += new_value - old_value;
@@ -954,14 +976,39 @@ void romeNumbers()
 		}
 	}
 	cout << "Result is " << result << "\n";
-	
+
 	pause();
 	cls();
 
 }
 
+int lcg_recursive(int i, int m, int c)
+{
+	// same as if(i>0) {return lcg(i-1)} else {return 0}
+	return i > 0 ? (lcg_recursive(i - 1, m, c) * m + i) % c : 0;
+}
+
+
+void lcg()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	// I didn't found an easy solution to implement recursive lamda, so I made  classic int lcg(int i){}
+	int i = 3, m = 37, c = 64; // 1st variant
+	//int i = 13894, m = 25173, c = 65537; // 2nd variant
+	int s = lcg_recursive(i, m, c);
+
+	cout << "i is " << i << ", m is " << m << ", c is " << c << "\nResult is " << s << "\n";
+	pause();
+	cls();
+}
+
 void matrixMult()
 {
+	cout << "This is " << __func__ << " module\n";
+
+	// I wrote matrxi multiplier, but this hasn't be as task
+	/*
 	const int size = 15;
 	int wA, hA, wB, hB;
 	int A[size][size], B[size][size], C[size][size];
@@ -1002,7 +1049,7 @@ void matrixMult()
 			pause();
 		}
 	} while (hA <= 0);
-	
+
 	// Generating matrix A
 	if (generate)
 	{
@@ -1073,7 +1120,7 @@ void matrixMult()
 				B[i][j] = rand() % 10;
 				cout << B[i][j] << ' ';
 			}
-			cout << "\n"; 
+			cout << "\n";
 		}
 	}
 	else
@@ -1126,13 +1173,113 @@ void matrixMult()
 		}
 		cout << "\n";
 	}
+	*/
 
+	double A[3][4], B[4][2], C[3][2];
+
+	int indMin, indMax;
+	double max, min, sumK, sumD;
+	max = -1;
+	min = -1;
+	indMin = -1;
+	indMax = -1;
+	sumD = 0;
+
+	// Input matrix A
+	cout << "Enter the first matrix\n";
+	for (int i = 0; i < 3; i++)
+	{
+		cout << "Enter " << i << " row\n";
+		for (int j = 0; j < 4; j++)
+		{
+			cin >> A[i][j];
+			clear();
+		}
+		cls();
+	}
+
+	// Input matrix B
+	cout << "Enter the second matrix\n";
+	for (int i = 0; i < 4; i++)
+	{
+		cout << "Enter " << i << " row\n";
+		for (int j = 0; j < 2; j++)
+		{
+			cin >> B[i][j];
+			clear();
+		}
+		cls();
+	}
+
+	// Init matrix C (because we can't null + int)
+	for (int i = 0; i < 3; i++)
+		for (int j = 0; j < 2; j++)
+			C[i][j] = 0;
+
+	// Calculating
+	for (int i = 0; i < 3; i++)
+		for (int j = 0; j < 2; j++)
+			for (int k = 0; k < 4; k++)
+				C[i][j] = C[i][j] + A[i][k] * B[k][j];
+
+	// Calculating money
+	for (int j = 0; j < 3; j++)
+	{
+		sumD += C[j][0];
+		if (C[j][0] > max)
+		{
+			max = C[j][0];
+			indMax = j;
+		}
+
+		if ((C[j][0] < min) || (min == -1))
+		{
+			min = C[j][0];
+			indMin = j;
+		}
+	}
+	cout << "Max money get seller " << indMax + 1 << "\nMin money get the seller" << indMin + 1 << "\n\n";
+
+
+	max = -1;
+	min = -1;
+	indMin = -1;
+	indMax = -1;
+	sumK = 0;
+
+	// Calculating comissions
+	for (int j = 0; j < 3; j++)
+	{
+
+		sumK += C[j][1];
+
+		if (C[j][1] > max)
+		{
+			max = C[j][1];
+			indMax = j;
+		}
+
+		if ((C[j][1] < min) || (min == -1))
+		{
+			min = C[j][1];
+			indMin = j;
+		}
+	}
+
+	cout << "Max Comissions get the seller " << indMax + 1 << "\n" 
+		<< "Min Comission get the seller " << indMin + 1 << "\n"
+		<< "Overall sum of money << " << sumD << "\n" 
+		<< "Overall Comissions " << sumK << "\n"
+		<< "All money is " << sumD + sumK << "\n";
+	
 	pause();
 	cls();
 }
 
 void notation()
 {
+	cout << "This is " << __func__ << " module\n";
+
 	int base;
 	int symbol;
 	string baseNum;
@@ -1206,11 +1353,11 @@ void notation()
 	cout << "In base 10 Number is " << num10 << "\n";
 	pause();
 	cls();
-	
+
 	/*
 		To be correct, we can use negative or big numbers, but it will be more complicated
 		Also we possible can use float base, but operation of % doesn't support floats
-		By the way, translation from negative works properly, 
+		By the way, translation from negative works properly,
 		But for base greater than 35(0-Z) writes in decimal with [], so it ould be better to use regex
 	*/
 	do
