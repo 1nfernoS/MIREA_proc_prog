@@ -9,36 +9,42 @@
 #include <vector>	//for push_back to array
 
 
-/*========================================================================
- | FUNC:                                                                 |
- |  main            -   interface looped for entering tasks              |
- |                                                                       |
- |  hw1             -   interface for 1st homework (empty)               |
- |  hw2             -   interface for 2nd homework (empty)               |
- |  hw3             -   interface for 3rd homework                       |
- |      credit      -   task for calculate month payment for credit      |
- |      percent     -   task for calculate percent of credit             |
- |      print       -   task for print file (source code)                |
- |      regex       -   task for find numbers in file (source code)      |
- |      sortLetters -   task for sort all symbols in file (source code)  |
- |  hw4	            -   interface for 4th homework                       |
- |      sumFile     -   task for get sum of alol numbers from file       |
- |      sign        -   task for return sign of input num                |
- |      area        -   task for get area square, triangle, circle       |
- |      flag        -   task for print American flag                     |
- |      sinus       -   task for print graph of sin(x)                   |
- |      romeNumbers -   task for translate rome numbers into arabic      |
- |      lcg         -   task for LCG Pseudo RNG                          |
- |      matrixMult  -   task for multiplying matrix                      |
- |      notation    -   task for translate number into different notation|
- |  hw5	            -   interface for 5th homework                       |
- |                                                                       |
- |-----------------------------------------------------------------------|
- |                                                                       |
- |  ignore          -   for clear input                                  |
- |  cls             -   short system("cls")                              |
- |  pause           -   short system("pause")                            |
- ========================================================================*/
+/*==========================================================================
+ | FUNC:                                                                   |
+ |  main            -   interface looped for entering tasks                |
+ |                                                                         |
+ |  hw1             -   interface for 1st homework (empty)                 |
+ |  hw2             -   interface for 2nd homework (empty)                 |
+ |  hw3             -   interface for 3rd homework                         |
+ |      credit      -   task for calculate month payment for credit        |
+ |      percent     -   task for calculate percent of credit               |
+ |      print       -   task for print file (source code)                  |
+ |      regex       -   task for find numbers in file (source code)        |
+ |      sortLetters -   task for sort all symbols in file (source code)    |
+ |  hw4	            -   interface for 4th homework                         |
+ |      sumFile     -   task for get sum of alol numbers from file         |
+ |      sign        -   task for return sign of input num                  |
+ |      area        -   task for get area square, triangle, circle         |
+ |      flag        -   task for print American flag                       |
+ |      sinus       -   task for print graph of sin(x)                     |
+ |      romeNumbers -   task for translate rome numbers into arabic        |
+ |      lcg         -   task for LCG Pseudo RNG                            |
+ |      matrixMult  -   task for multiplying matrix                        |
+ |      notation    -   task for translate number into different notation  |
+ |  hw5	            -   interface for 5th homework                         |
+ |      euclid		-   task for get greatest common divisor               | 
+ |      eratosphene -   task for                                           | 
+ |      textN		-   task for                                           |
+ |      textY		-   task for                                           |
+ |      rowsN		-   task for                                           |
+ |      rowsY		-   task for                                           |
+ |                                                                         |
+ |-------------------------------------------------------------------------|
+ |                                                                         |
+ |  ignore          -   for clear input                                    |
+ |  cls             -   short system("cls")                                |
+ |  pause           -   short system("pause")                              |
+ ==========================================================================*/
 
 using namespace std;
 
@@ -75,38 +81,24 @@ void notation();
 
 void hw5();
 
+void euclid();
+void eratosthenes();
+void textN();
+void textY();
+void rowsN();
+void rowsY();
+
 
 void test()
 {
 	cout << "Welcome alpha test module\n";
-	//string s = "az AZ"; //65-90 97-122
-	/*
-	for (int i = 48; i <= 57; i++)
-		cout << char(i) << ' ';
-		//0 1 2 3 4 5 6 7 8 9
-	cout << '\n';
-	for (int i = 65; i <= 90; i++)
-		cout << char(i) << ' ';
-	//A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
-	cout << '\n';
-	for (int i = 97; i <= 122; i++)
-		cout << char(i) << ' ';
-	//a b c d e f g h i j k l m n o p q r s t u v w x y z
-	cout << '\n';
-
-	//cout << int(s[0]) << ' ' << int(s[1]) << ' ' << int(s[2]) << ' ' << int(s[3]) << ' ' << int(s[4]) << ' ' << "\n";
-	cout << int('a') - 48 - 7 - 32<< ' ' << int('z') - 55  - 32 << "\n";
-	//cout << int('A') - 55 << ' ' << int('Z') - 55 << "\n";
-	//cout << int('0') << ' ' << int('9') << ' ' << int('1') << ' ' << "\n";
-	*/
-	string s = "10";
-	s += 49;
-	cout << char(48 + 2) << "\n";
+	
 }
 
 
 int main()
 {
+	setlocale(0, "");
 	bool q = false;
 	int choice;
 	while (!q)
@@ -902,46 +894,89 @@ void sinus()
 void romeNumbers()
 {
 	cout << "This is " << __func__ << " module\n";
+	string a;
 
-	// get numeric value of symbol
-	auto decrypt = [](char num)
+	cout << "Enter Romanian Number\n> ";
+	cin >> a;
+	clear();
+
+	int j = a.length();
+	a += "000"; // to work switches
+	int NUMBER = 0;
+	int x = 0, y = 0, z = 0, t = 0,
+		kv = 0, kl = 0, kd = 0, // flag of repeating 5*
+		k2 = 0, // flag to break
+		k3 = 1001; // flag for going from higher to lower
+	
+	for (int i = 0; i < j; i++) 
 	{
-		switch (num)
+		switch (a[i]) 
 		{
-		case 'I':
-		case 'i':
-			return 1;
-			break;
-		case 'V':
-		case 'v':
-			return 5;
-			break;
-		case 'X':
-		case 'x':
-			return 10;
-			break;
-		case 'L':
-		case 'l':
-			return 50;
-			break;
-		case 'C':
-		case 'c':
-			return 100;
-			break;
-		case 'D':
-		case 'd':
-			return 500;
-			break;
-		case 'M':
-		case 'm':
-			return 1000;
-			break;
-		default:
-			return 0;
-			break;
+			case 'I':case 'i': x = 1; break;
+			case 'V':case 'v': x = 5; kv = kv + 1;  break;
+			case 'X':case 'x': x = 10; break; // X
+			case 'L':case 'l': x = 50; kl = kl + 1; break; // L
+			case 'C':case 'c': x = 100; break; // C
+			case 'D':case 'd': x = 500; kd = kd + 1; break; // D
+			case 'M':case 'm': x = 1000; break; // M
 		}
-	};
+		
+		switch (a[i + 1]) 
+		{
+			case '0': y = 0; break; // 0 
+			case 'I':case 'i': y = 1; break; // I
+			case 'V':case 'v': y = 5; break; // V
+			case 'X':case 'x': y = 10; break; // X
+			case 'L':case 'l': y = 50; break; // L
+			case 'C':case 'c': y = 100; break; // C
+			case 'D':case 'd': y = 500; break; // D
+			case 'M':case 'm': y = 1000; break; // M
+		}
+		switch (a[i + 2]) 
+		{
+			case '0': z = 0; break; // 0 
+			case 'I':case 'i': z = 1; break; // I
+			case 'V':case 'v': z = 5; break; // V
+			case 'X':case 'x': z = 10; break; // X
+			case 'L':case 'l': z = 50; break; // L
+			case 'C':case 'c': z = 100; break; // C
+			case 'D':case 'd': z = 500; break; // D
+			case 'M':case 'm': z = 1000; break; // M
+		}
+		switch (a[i + 3]) 
+		{
+			case '0': t = 0; break; // 0 
+			case 'I':case 'i': t = 1; break; // I
+			case 'V':case 'v': t = 5; break; // V
+			case 'X':case 'x': t = 10; break; // X
+			case 'L':case 'l': t = 50; break; // L
+			case 'C':case 'c': t = 100; break; // C
+			case 'D':case 'd': t = 500; break; // D
+			case 'M':case 'm': t = 1000; break; // M
+		}
 
+
+		if (x < y) {
+			NUMBER = NUMBER - x;
+			k3 = x;
+		}
+		else if (y < k3) //next after substraction
+			NUMBER = NUMBER + x;
+		else // IXI, LCC
+			k2 = k2 + 1;
+		
+		if (y - x == x)  // VX, LC
+			k2 = k2 + 1;
+		
+		if ((x < z && y < z)
+			or (kl > 1) or (kd > 1) or (kv > 1)
+			or ((x == y) && (y == z) && (z == t) && (t == x)) // not IIII or XXXX
+			or (k2 > 0)) {
+			cout << "Error in number" << endl;
+		}
+	}
+
+	/*
 	char c, per;
 	string s, ch;
 	int new_value, old_value = 0, result = 0;
@@ -975,7 +1010,8 @@ void romeNumbers()
 			old_value = 0;
 		}
 	}
-	cout << "Result is " << result << "\n";
+	*/
+	cout << "Result is " << NUMBER << "\n";
 
 	pause();
 	cls();
@@ -987,8 +1023,6 @@ int lcg_recursive(int i, int m, int c)
 	// same as if(i>0) {return lcg(i-1)} else {return 0}
 	return i > 0 ? (lcg_recursive(i - 1, m, c) * m + i) % c : 0;
 }
-
-
 void lcg()
 {
 	cout << "This is " << __func__ << " module\n";
@@ -1358,7 +1392,7 @@ void notation()
 		To be correct, we can use negative or big numbers, but it will be more complicated
 		Also we possible can use float base, but operation of % doesn't support floats
 		By the way, translation from negative works properly,
-		But for base greater than 35(0-Z) writes in decimal with [], so it ould be better to use regex
+		But for base greater than 35(0-Z) writes in decimal with [], so it would be better to use regex
 	*/
 	do
 	{
@@ -1408,15 +1442,178 @@ void notation()
 
 }
 
+
 void hw5()
 {
-
 	bool quitInner = false;
 	int choice;
 	while (!quitInner)
 	{
-		cout << "This is 5th homework. Now there are no modules, sorry!\n";
-		pause();
-		quitInner = true;
+		cout << "This is 5th  homework programming tasks\nChoose task to check:\n"
+			<< "1. Euclid's algorhytm\n"
+			<< "2. Sieve of Eratosthenes\n"
+			<< "3. Text prcossing (number N)\n"
+			<< "4. Text prcossing (number Y)\n"
+			<< "5. Rows (number N)\n"
+			<< "6. Rows (number Y)\n"
+			<< "0. Back\n"
+			<< "> ";
+		cin >> choice;
+		clear();
+		switch (choice)
+		{
+		case 0:
+		{
+			quitInner = true;
+			break;
+		}
+		case 1:
+		{
+			cls();
+			euclid();
+			break;
+		}
+		case 2:
+		{
+			cls();
+			eratosthenes();
+			break;
+		}
+		case 3:
+		{
+			cls();
+			textN();
+			break;
+		}
+		case 4:
+		{
+			cls();
+			textY();
+			break;
+		}
+		case 5:
+		{
+			cls();
+			rowsN();
+			break;
+		}
+		case 6:
+		{
+			cls();
+			rowsY();
+			break;
+		}
+		default:
+			cls();
+			cout << "Sorry, I don't understand. Please choose something else\n";
+			break;
+		}
 	}
+}
+
+void euclid()
+{
+	cout << "This is " << __func__ << " module\n";
+	int a, b;
+	int tmpA, tmpB; // just to use both algorhytms
+
+	cout << "Enter first number\n> ";
+	cin >> a;
+	clear();
+	// no input check because we need any number and we get any number or 0
+	
+	cout << "Enter second number\n> ";
+	cin >> b;	
+	clear();
+	// no input check because we need any number and we get any number or 0
+
+	// division method
+	tmpA = a;
+	tmpB = b;
+	while (tmpB) {
+		tmpA %= tmpB;
+		swap(tmpA, tmpB);
+	}
+	cout << "Result of division algorhytm is " << tmpA << "\n";
+
+	// substraction method
+	tmpA = a;
+	tmpB = b;
+	while (tmpA != tmpB)
+	{
+		tmpA > tmpB ? tmpA -= tmpB : tmpB -= tmpA;
+	}
+	cout << "Result of substraction algorhytm is " << tmpA << "\n";
+	
+	pause();
+	cls();
+
+}
+
+void eratosthenes()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	int n;
+	do
+	{
+		cout << "Enter size n\n> ";
+		cin >> n;
+		clear();
+		if (n < 2)
+		{
+			cout << "Error! Size must be greater or equal 2!\n";
+			pause();
+			cls();
+		}
+		// technically, it can go urther than 2**28, but below 2**29
+		if (n > 268435456)
+		{
+			cout << "Error! Size is very big to calculate!\n";
+			pause();
+			cls();
+		}
+	} while (n < 2 || n > 268435456);
+
+	int* a = new int[n + 1];
+	for (int i = 0; i < n + 1; i++)
+		a[i] = i;
+	// getting sieve
+	for (unsigned long long i = 2; i < n + 1; i++)
+	{
+		if (a[i] != 0)
+		{
+			cout << a[i] << ' ';
+			for (unsigned long int j = i * i; j < n + 1; j += i)
+				a[j] = 0;
+		}
+	}
+	delete[] a;
+	cout << "Complete! \n";
+	pause();
+	cls();
+}
+
+void textN()
+{
+	cout << "This is " << __func__ << " module\n";
+
+}
+
+void textY()
+{
+	cout << "This is " << __func__ << " module\n";
+
+}
+
+void rowsN()
+{
+	cout << "This is " << __func__ << " module\n";
+
+}
+
+void rowsY()
+{
+	cout << "This is " << __func__ << " module\n";
+
 }
