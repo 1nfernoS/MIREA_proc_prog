@@ -7,6 +7,7 @@
 #include <string>	//for getline
 #include <sstream>  //string streams
 #include <vector>	//for push_back to array
+#include <map>
 
 
 /*==========================================================================
@@ -33,7 +34,7 @@
  |      notation    -   task for translate number into different notation  |
  |  hw5	            -   interface for 5th homework                         |
  |      euclid		-   task for get greatest common divisor               | 
- |      eratosphene -   task for                                           | 
+ |      eratosphene -   task for get all simple number to N                | 
  |      textN		-   task for                                           |
  |      textY		-   task for                                           |
  |      rowsN		-   task for                                           |
@@ -83,8 +84,8 @@ void hw5();
 
 void euclid();
 void eratosthenes();
-void textN();
-void textY();
+void text8();
+void text19();
 void rowsN();
 void rowsY();
 
@@ -92,7 +93,7 @@ void rowsY();
 void test()
 {
 	cout << "Welcome alpha test module\n";
-	
+
 }
 
 
@@ -1452,8 +1453,8 @@ void hw5()
 		cout << "This is 5th  homework programming tasks\nChoose task to check:\n"
 			<< "1. Euclid's algorhytm\n"
 			<< "2. Sieve of Eratosthenes\n"
-			<< "3. Text prcossing (number N)\n"
-			<< "4. Text prcossing (number Y)\n"
+			<< "3. Text prcossing (number 8)\n"
+			<< "4. Text prcossing (number 19)\n"
 			<< "5. Rows (number N)\n"
 			<< "6. Rows (number Y)\n"
 			<< "0. Back\n"
@@ -1482,13 +1483,13 @@ void hw5()
 		case 3:
 		{
 			cls();
-			textN();
+			text8();
 			break;
 		}
 		case 4:
 		{
 			cls();
-			textY();
+			text19();
 			break;
 		}
 		case 5:
@@ -1579,31 +1580,190 @@ void eratosthenes()
 	for (int i = 0; i < n + 1; i++)
 		a[i] = i;
 	// getting sieve
-	for (unsigned long long i = 2; i < n + 1; i++)
+	for (unsigned long int i = 2; i < n + 1; i++)
 	{
 		if (a[i] != 0)
 		{
 			cout << a[i] << ' ';
-			for (unsigned long int j = i * i; j < n + 1; j += i)
+			for (unsigned int j = i * i; j < n + 1; j += i)
 				a[j] = 0;
 		}
 	}
 	delete[] a;
-	cout << "Complete! \n";
 	pause();
 	cls();
 }
 
-void textN()
+void text8()
 {
+	// 8. Преобразование текста в цепочку ASCII-кодов.
+	
 	cout << "This is " << __func__ << " module\n";
 
+	// Okay, it's will be MANY number, so okay, I will create file
+	string path = __FILE__;
+	string directory;
+
+	fstream text(path);
+
+	const size_t last_slash_idx = path.rfind('\\');
+	if (std::string::npos != last_slash_idx)
+	{
+		directory = path.substr(0, last_slash_idx);
+	}
+	if (directory.empty())
+	{
+		cout << "Error! No path at\n\t" << path << "\n";
+		pause();
+		return;
+	}
+
+	path = directory + "\\example.txt";
+
+
+	//create if not exists
+	text.open(path, ios::out);
+
+	//write
+	if (text.is_open())
+	{
+			text << "1234567890qwertyuiop[]\nasdfghjkl;' zxcvbnm,./\n0123456789/*-+\n";
+	}
+	else
+		cout << "No such file at\n  " << path << "\n";
+	text.close();
+
+	// reading
+	cout << "Content of file:\n";
+	text.open(path, ios::in);
+	if (text.is_open())
+	{
+		while (!text.eof())
+		{
+			char c;
+			text >> c;
+			cout << c;
+		}
+		text.close();
+	}
+	else
+		cout << "No such file at\n  " << path << "\n";
+
+	cout << "\nCodes of characters:\n";
+
+	text.open(path, ios::in);
+	if (text.is_open())
+	{
+		while (!text.eof())
+		{
+			char c;
+			text >> c;
+			cout << int(c) << ' ';
+		}
+
+		text.close();
+	}
+	else
+		cout << "No such file at\n  " << path << "\n";
+
+	cout << '\n';
+
+	pause();
+	cls();
 }
 
-void textY()
+void text19()
 {
 	cout << "This is " << __func__ << " module\n";
 
+	//19. Статистическая обработка текстового файла: поиск наиболее часто встречающегося символа
+
+	map<char, int> rep;
+	int max = 0;
+	int maxVal;
+
+	string path = __FILE__;
+	string s;
+	ifstream file(path);
+	if (file.is_open())
+	{
+		while (getline(file, s))
+		{
+			// counting numbers
+			for (int i = 0; i < s.length(); i++)
+			{
+				rep[s[i]] += 1;
+			}
+		}
+		file.close();
+	}
+	else cout << "No such file at\n  " << path << "\n";
+
+	/*
+	* if we want to use another file
+	string directory;
+	const size_t last_slash_idx = path.rfind('\\');
+	if (std::string::npos != last_slash_idx)
+	{
+		directory = path.substr(0, last_slash_idx);
+	}
+	if (directory.empty())
+	{
+		cout << "Error! No path at\n\t" << path << "\n";
+		pause();
+		return;
+	}
+
+	path = directory + "\\example.txt";
+	*/
+
+	// reading if it is not a source code
+	if (path != __FILE__)
+	{
+		cout << "Content of file:\n";
+		file.open(path, ios::in);
+		if (file.is_open())
+		{
+			while (!file.eof())
+			{
+				char c;
+				file >> c;
+				cout << c;
+			}
+			file.close();
+		}
+		else
+			cout << "No such file at\n  " << path << "\n";
+
+	}
+		
+	// counting numbers
+	for (int i = 0; i < s.length(); i++)
+	{
+		rep[s[i]] += 1;
+	}
+
+	for (int i = 0; i < rep.size(); i++)
+	{
+		if (rep[i] > max)
+		{
+			max = rep[i];
+			maxVal = i;
+		}
+	}
+
+	cout << "The first most repeatable chracter is " << char(maxVal) << "(" << maxVal << ") - repeated " << max << " times\n";
+
+	/*
+	* returning all counts
+	for (int i = 0; i < rep.size(); i++)
+	{
+		if (rep[i] != 0)
+			cout << char(i) << " - " << rep[i] << '\n';
+	}
+	*/
+	pause();
+	cls();
 }
 
 void rowsN()
