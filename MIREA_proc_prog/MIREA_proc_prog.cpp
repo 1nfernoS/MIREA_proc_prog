@@ -35,8 +35,8 @@
  |  hw5	            -   interface for 5th homework                         |
  |      euclid		-   task for get greatest common divisor               | 
  |      eratosphene -   task for get all simple number to N                | 
- |      textN		-   task for                                           |
- |      textY		-   task for                                           |
+ |      text8		-   task for ASCII codes of text file                  |
+ |      text19		-   task for task for search the most repeatable char  |
  |      rowsN		-   task for                                           |
  |      rowsY		-   task for                                           |
  |                                                                         |
@@ -58,7 +58,19 @@ void clear();
 
 void hw1();
 
+void sayName();
+void arithmethics();
+void linearEquation();
+void squareEquation();
+void lampAndCurtain();
+
 void hw2();
+
+void cone();
+void tree();
+void function();
+void order();
+void tabbing();
 
 void hw3();
 
@@ -192,31 +204,400 @@ void clear()
 }
 
 
-
 void hw1()
 {
+
 	bool quitInner = false;
 	int choice;
 	while (!quitInner)
 	{
-		cout << "This is 1st homework. Now there are no modules, sorry!\n";
-		pause();
-		quitInner = true;
+		cout << "This is 1st  homework programming tasks\nChoose task to check:\n"
+			<< "1. Say my name\n"
+			<< "2. Maths\n"
+			<< "3. Linear equation\n"
+			<< "4. Square equation\n"
+			<< "5. Lamp and curtain\n"
+			<< "0. Back\n"
+			<< "> ";
+		cin >> choice;
+		clear();
+		switch (choice)
+		{
+		case 0:
+		{
+			quitInner = true;
+			break;
+		}
+		case 1:
+		{
+			cls();
+			sayName();
+			break;
+		}
+		case 2:
+		{
+			cls();
+			arithmethics();
+			break;
+		}
+		case 3:
+		{
+			cls();
+			linearEquation();
+			break;
+		}
+		case 4:
+		{
+			cls();
+			squareEquation();
+			break;
+		}
+		case 5:
+		{
+			cls();
+			lampAndCurtain();
+			break;
+		}
+		default:
+			cls();
+			cout << "Sorry, I don't understand. Please choose something else\n";
+			break;
+		}
 	}
 }
+
+void sayName()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	string name;
+
+	cout << "Say your name\n> ";
+	cin >> name;
+	clear();
+
+	cout << "Your name is " << name << "? Good\n";
+
+	pause();
+	cls();
+}
+
+void arithmethics()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	int a, b;
+
+	cout << "Enter a\n> ";
+	cin >> a;
+	clear();
+
+	cout << "Enter b\n> ";
+	cin >> b;
+	clear();
+
+	cout << "Sum of " << a << " and " << b << " is " << a + b << "\n";
+	cout << "Sub of " << a << " and " << b << " is " << a - b << "\n";
+	cout << "Mul of " << a << " and " << b << " is " << a * b << "\n";
+	if (a / b > 0 && a % b == 0)
+		cout << "Div of " << a << " and " << b << " is " << a / b << "\n";
+	else
+		cout << "Div of " << a << " and " << b << " is not possible\n";
+
+	pause();
+	cls();
+}
+
+void linearEquation()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	float b, c, res;
+
+	cout << "Enter b\n> ";
+	cin >> b;
+	clear();
+
+	cout << "Enter c\n> ";
+	cin >> c;
+	clear();
+
+	cout << "Equation is " << b << "x + " << c << " = 0\n";
+	if (b == 0)
+		cout << "Answer is: C";
+	else
+	{
+		res = (0 - c) / b;
+		cout << "Answer is " << res << "\n";
+	}
+
+	pause();
+	cls();
+}
+
+void squareEquation()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	// coefficients
+	int a, b, c;
+
+
+	// get our operands
+	cout << "Enter a\n> ";
+	cin >> a;
+	clear();
+	if (a == 0)
+	{
+		cout << "not a sqr";
+		return;
+	}
+
+	cout << "Enter b\n> ";
+	cin >> b;
+	clear();
+	cout << "Enter c\n> ";
+	cin >> c;
+	clear();
+
+	//calculations
+	int D = (b * b) - (4 * a * c);
+	cout << "D is " << D << "\n";
+
+	if (D > 0)
+		cout << "x1 is " << (-b + sqrt(D)) / a << "\nx2 is " << (-b - sqrt(D)) / a << "\n";
+	else
+		if (D == 0)
+			cout << "x is " << (-b + sqrt(D)) / a << "\n";
+		else
+			cout << "No solutions\n";
+
+	pause();
+	cls();
+}
+
+void lampAndCurtain()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	bool day, lamp, curtain;
+	char answer;
+
+	cout << "Day?[y/n]\n> ";
+	cin >> answer;
+	clear();
+	day = answer == 'y';
+
+	cout << "Curtain open?[y/n]\n> ";
+	cin >> answer;
+	clear();
+	curtain = answer == 'y';
+
+	cout << "Lamp is on?[y/n]\n> ";
+	cin >> answer;
+	clear();
+	lamp = answer == 'y';
+
+
+	// result
+	if (lamp || (day && curtain))
+		cout << "Now is light\n";
+	else
+		cout << "Now is dark\n";
+
+	pause();
+	cls();
+
+}
+
 
 void hw2()
 {
-
 	bool quitInner = false;
 	int choice;
 	while (!quitInner)
 	{
-		cout << "This is 2nd homework. Now there are no modules, sorry!\n";
-		pause();
-		quitInner = true;
+		cout << "This is 2nd  homework programming tasks\nChoose task to check:\n"
+			<< "1. Cone\n"
+			<< "2. Tree\n"
+			<< "3. Function\n"
+			<< "4. Order\n"
+			<< "5. Tabbing\n"
+			<< "0. Back\n"
+			<< "> ";
+		cin >> choice;
+		clear();
+		switch (choice)
+		{
+		case 0:
+		{
+			quitInner = true;
+			break;
+		}
+		case 1:
+		{
+			cls();
+			cone();
+			break;
+		}
+		case 2:
+		{
+			cls();
+			tree();
+			break;
+		}
+		case 3:
+		{
+			cls();
+			function();
+			break;
+		}
+		case 4:
+		{
+			cls();
+			order();
+			break;
+		}
+		case 5:
+		{
+			cls();
+			tabbing();
+			break;
+		}
+		default:
+			cls();
+			cout << "Sorry, I don't understand. Please choose something else\n";
+			break;
+		}
 	}
 }
+
+void cone()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	double V, S, R, r, l, h;
+	cout << "Enter h\n> ";
+	cin >> h;
+	clear();
+	cout << "Enter R\n> ";
+	cin >> R;
+	clear();
+	cout << "Enter r\n> ";
+	cin >> r;
+	clear();
+	l = sqrt(h * h + pow((R - r), 2));
+	if ((R != r) and (R > 0 and r > 0 and h > 0 and l > 0))
+	{
+		S = M_PI * (R * R + (R + r) * l + r * r);
+		cout << "S = " << S << "\n";
+		V = float(1/3) * M_PI * h * (R * R + R * r + r * r);
+		cout << "V = " << V << "\n";
+	}
+	else
+	{
+		cout << "Wrong data provided\n";
+	}
+
+	pause();
+	cls();
+}
+
+void tree()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	float w, a, x;
+	int i;
+	cout << "Enter a\n> ";
+	cin >> a;
+	clear();
+	cout << "Enter x\n> ";
+	cin >> x;
+	clear();
+	w = 0;
+	if ((abs(x) < 1) and (x != 0))
+		cout << "\n" << "w = " << (w = a * log(abs(x))) << "\n"; 
+	else
+		if ((abs(x) >= 1) and (a >= x * x)) 
+			cout << "\n" << "w = " << (w = sqrt(a - x * x)) << "\n"; 
+		else 
+			cout << "Doesn't exists\n"; 
+
+	pause();
+	cls();
+}
+
+void function()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	float z, b, y, x;
+
+	cout << "z = ln(b-y) * sqrt(b-x)\n";
+	
+	cout << "Enter x\n> ";
+	cin >> x;
+	clear();
+
+	cout << "Enter y\n> ";
+	cin >> y;
+	clear();
+	
+	cout << "Enter b\n> ";
+	cin >> b;
+	clear();
+	
+	if ((b - y > 0) and (b - x >= 0))
+		cout << "z = " << log(b - y) * sqrt(b - x) << "\n";
+	else 
+		cout << "Doesn't exists\n";
+
+	pause();
+	cls();
+}
+
+void order()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	int n;
+
+	cout << "Enter n\n> ";
+	cin >> n;
+	clear();
+	if (n < 0) n = 0;
+
+	for (int i = 0; n < 10; i++)
+		cout << n + i << " ";
+	cout << "\n";
+
+	pause();
+	cls();
+}
+
+void tabbing()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	float y;
+
+	for (float x = -4.f; x < 4.f; x += 0.5)
+	{
+		if (x == 1)
+			y = 0;
+		else
+			y = (x * x - 2 * x + 2) / (x - 1);
+		cout << "Не определено";
+		cout << "x = \t" << x << "\t y = " << y << "\n";
+	}
+
+	pause();
+	cls();
+
+
+}
+
 
 void hw3()
 {
