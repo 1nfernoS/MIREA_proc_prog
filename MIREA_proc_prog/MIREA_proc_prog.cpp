@@ -33,8 +33,8 @@
  |      matrixMult  -   task for multiplying matrix                        |
  |      notation    -   task for translate number into different notation  |
  |  hw5	            -   interface for 5th homework                         |
- |      euclid		-   task for get greatest common divisor               | 
- |      eratosphene -   task for get all simple number to N                | 
+ |      euclid		-   task for get greatest common divisor               |
+ |      eratosphene -   task for get all simple number to N                |
  |      text8		-   task for ASCII codes of text file                  |
  |      text19		-   task for search the most repeatable char           |
  |      rows13		-   task for find all numbers with sum of digits = m   |
@@ -119,13 +119,13 @@ int main()
 	while (!q)
 	{
 		cout << "This is Gaydenko's homework programming tasks\nChoose homework to check:\n"
-			<< "1. Simple data Handlers (passed, in C)\n"
+			<< "1. Simple data Handlers (passed)\n"
 			//	<< " - Name\n - Arithmetics\n - Equation\n - Square Equation\n - Lamp, Curveand Sun Question\n"
-			<< "2. Math calculations (passed, in C)\n"
+			<< "2. Math calculations (passed)\n"
 			//	<< " - Cone\n - Tree Function\n - Function ln\n - 10 Next Numbers\n - Tabulate Function\n"
 			<< "3. File and math processing (passed)\n"
-			<< "4. Files, Drawing and Math again(not complete)\n"
-			<< "5. File and math processing (not complete)\n"
+			<< "4. Files, Drawing and Math again(complete)\n"
+			<< "5. File and math processing (complete)\n"
 			//	<< " - Euclid's Algorythm\n - Sieve Of Eratosthenes\n - Files Handler\n - Rows numbers\n - Files(1)\n"
 			<< "0. Quit\n"
 			<< "> ";
@@ -493,7 +493,7 @@ void cone()
 	{
 		S = M_PI * (R * R + (R + r) * l + r * r);
 		cout << "S = " << S << "\n";
-		V = float(1/3) * M_PI * h * (R * R + R * r + r * r);
+		V = float(1 / 3) * M_PI * h * (R * R + R * r + r * r);
 		cout << "V = " << V << "\n";
 	}
 	else
@@ -519,12 +519,12 @@ void tree()
 	clear();
 	w = 0;
 	if ((abs(x) < 1) and (x != 0))
-		cout << "\n" << "w = " << (w = a * log(abs(x))) << "\n"; 
+		cout << "\n" << "w = " << (w = a * log(abs(x))) << "\n";
 	else
-		if ((abs(x) >= 1) and (a >= x * x)) 
-			cout << "\n" << "w = " << (w = sqrt(a - x * x)) << "\n"; 
-		else 
-			cout << "Doesn't exists\n"; 
+		if ((abs(x) >= 1) and (a >= x * x))
+			cout << "\n" << "w = " << (w = sqrt(a - x * x)) << "\n";
+		else
+			cout << "Doesn't exists\n";
 
 	pause();
 	cls();
@@ -537,7 +537,7 @@ void function()
 	float z, b, y, x;
 
 	cout << "z = ln(b-y) * sqrt(b-x)\n";
-	
+
 	cout << "Enter x\n> ";
 	cin >> x;
 	clear();
@@ -545,14 +545,14 @@ void function()
 	cout << "Enter y\n> ";
 	cin >> y;
 	clear();
-	
+
 	cout << "Enter b\n> ";
 	cin >> b;
 	clear();
-	
+
 	if ((b - y > 0) and (b - x >= 0))
 		cout << "z = " << log(b - y) * sqrt(b - x) << "\n";
-	else 
+	else
 		cout << "Doesn't exists\n";
 
 	pause();
@@ -796,7 +796,6 @@ void regex()
 {
 	cout << "This is " << __func__ << " module\n";
 
-
 	string path = __FILE__;
 	string line;
 	ifstream file(path);
@@ -810,7 +809,6 @@ void regex()
 
 			//get line into stream
 			ss << line;
-
 			while (!ss.eof()) {
 				//get word from stream (splits by spaces)
 				ss >> temp;
@@ -1179,7 +1177,11 @@ void area()
 				}
 			} while (c <= 0);
 
-			cout << "Area of triange with sides " << a << ", " << b << ", " << c << " is " << triangle(a, b, c) << "\n";
+			if (a + b > c&& a + c > b&& b + c > a)
+				cout << "Area of triange with sides " << a << ", " << b << ", " << c << " is " << triangle(a, b, c) << "\n";
+			else
+				cout << "Error! Not existing triangle\n";
+
 
 			break;
 		}
@@ -1291,52 +1293,52 @@ void romeNumbers()
 		kv = 0, kl = 0, kd = 0, // flag of repeating 5*
 		k2 = 0, // flag to break
 		k3 = 1001; // flag for going from higher to lower
-	
-	for (int i = 0; i < j; i++) 
+
+	for (int i = 0; i < j; i++)
 	{
-		switch (a[i]) 
+		switch (a[i])
 		{
-			case 'I':case 'i': x = 1; break;
-			case 'V':case 'v': x = 5; kv = kv + 1;  break;
-			case 'X':case 'x': x = 10; break; // X
-			case 'L':case 'l': x = 50; kl = kl + 1; break; // L
-			case 'C':case 'c': x = 100; break; // C
-			case 'D':case 'd': x = 500; kd = kd + 1; break; // D
-			case 'M':case 'm': x = 1000; break; // M
+		case 'I':case 'i': x = 1; break;
+		case 'V':case 'v': x = 5; kv = kv + 1;  break;
+		case 'X':case 'x': x = 10; break; // X
+		case 'L':case 'l': x = 50; kl = kl + 1; break; // L
+		case 'C':case 'c': x = 100; break; // C
+		case 'D':case 'd': x = 500; kd = kd + 1; break; // D
+		case 'M':case 'm': x = 1000; break; // M
 		}
-		
-		switch (a[i + 1]) 
+
+		switch (a[i + 1])
 		{
-			case '0': y = 0; break; // 0 
-			case 'I':case 'i': y = 1; break; // I
-			case 'V':case 'v': y = 5; break; // V
-			case 'X':case 'x': y = 10; break; // X
-			case 'L':case 'l': y = 50; break; // L
-			case 'C':case 'c': y = 100; break; // C
-			case 'D':case 'd': y = 500; break; // D
-			case 'M':case 'm': y = 1000; break; // M
+		case '0': y = 0; break; // 0 
+		case 'I':case 'i': y = 1; break; // I
+		case 'V':case 'v': y = 5; break; // V
+		case 'X':case 'x': y = 10; break; // X
+		case 'L':case 'l': y = 50; break; // L
+		case 'C':case 'c': y = 100; break; // C
+		case 'D':case 'd': y = 500; break; // D
+		case 'M':case 'm': y = 1000; break; // M
 		}
-		switch (a[i + 2]) 
+		switch (a[i + 2])
 		{
-			case '0': z = 0; break; // 0 
-			case 'I':case 'i': z = 1; break; // I
-			case 'V':case 'v': z = 5; break; // V
-			case 'X':case 'x': z = 10; break; // X
-			case 'L':case 'l': z = 50; break; // L
-			case 'C':case 'c': z = 100; break; // C
-			case 'D':case 'd': z = 500; break; // D
-			case 'M':case 'm': z = 1000; break; // M
+		case '0': z = 0; break; // 0 
+		case 'I':case 'i': z = 1; break; // I
+		case 'V':case 'v': z = 5; break; // V
+		case 'X':case 'x': z = 10; break; // X
+		case 'L':case 'l': z = 50; break; // L
+		case 'C':case 'c': z = 100; break; // C
+		case 'D':case 'd': z = 500; break; // D
+		case 'M':case 'm': z = 1000; break; // M
 		}
-		switch (a[i + 3]) 
+		switch (a[i + 3])
 		{
-			case '0': t = 0; break; // 0 
-			case 'I':case 'i': t = 1; break; // I
-			case 'V':case 'v': t = 5; break; // V
-			case 'X':case 'x': t = 10; break; // X
-			case 'L':case 'l': t = 50; break; // L
-			case 'C':case 'c': t = 100; break; // C
-			case 'D':case 'd': t = 500; break; // D
-			case 'M':case 'm': t = 1000; break; // M
+		case '0': t = 0; break; // 0 
+		case 'I':case 'i': t = 1; break; // I
+		case 'V':case 'v': t = 5; break; // V
+		case 'X':case 'x': t = 10; break; // X
+		case 'L':case 'l': t = 50; break; // L
+		case 'C':case 'c': t = 100; break; // C
+		case 'D':case 'd': t = 500; break; // D
+		case 'M':case 'm': t = 1000; break; // M
 		}
 
 
@@ -1348,10 +1350,10 @@ void romeNumbers()
 			NUMBER = NUMBER + x;
 		else // IXI, LCC
 			k2 = k2 + 1;
-		
+
 		if (y - x == x)  // VX, LC
 			k2 = k2 + 1;
-		
+
 		if ((x < z && y < z)
 			or (kl > 1) or (kd > 1) or (kv > 1)
 			or ((x == y) && (y == z) && (z == t) && (t == x)) // not IIII or XXXX
@@ -1684,12 +1686,12 @@ void matrixMult()
 		}
 	}
 
-	cout << "Max Comissions get the seller " << indMax + 1 << "\n" 
+	cout << "Max Comissions get the seller " << indMax + 1 << "\n"
 		<< "Min Comission get the seller " << indMin + 1 << "\n"
-		<< "Overall sum of money << " << sumD << "\n" 
+		<< "Overall sum of money << " << sumD << "\n"
 		<< "Overall Comissions " << sumK << "\n"
 		<< "All money is " << sumD + sumK << "\n";
-	
+
 	pause();
 	cls();
 }
@@ -1749,7 +1751,7 @@ void notation()
 				symbol -= 32;
 
 			//cout << "symbol is " << symbol << "\n";
-			if (symbol < 0 || symbol > abs(base))
+			if (symbol < 0 || symbol >= abs(base))
 			{
 				cout << "Error! Number out of base notation\n";
 				error = true;
@@ -1912,9 +1914,9 @@ void euclid()
 	cin >> a;
 	clear();
 	// no input check because we need any number and we get any number or 0
-	
+
 	cout << "Enter second number\n> ";
-	cin >> b;	
+	cin >> b;
 	clear();
 	// no input check because we need any number and we get any number or 0
 
@@ -1935,7 +1937,7 @@ void euclid()
 		tmpA > tmpB ? tmpA -= tmpB : tmpB -= tmpA;
 	}
 	cout << "Result of substraction algorhytm is " << tmpA << "\n";
-	
+
 	pause();
 	cls();
 
@@ -1987,7 +1989,7 @@ void eratosthenes()
 void text8()
 {
 	// 8. Преобразование текста в цепочку ASCII-кодов.
-	
+
 	cout << "This is " << __func__ << " module\n";
 
 	// Okay, it's will be MANY number, so okay, I will create file
@@ -2017,7 +2019,7 @@ void text8()
 	//write
 	if (text.is_open())
 	{
-			text << "1234567890qwertyuiop[]\nasdfghjkl;' zxcvbnm,./\n0123456789/*-+\n";
+		text << "1234567890qwertyuiop[]\nasdfghjkl;' zxcvbnm,./\n0123456789/*-+\n";
 	}
 	else
 		cout << "No such file at\n  " << path << "\n";
@@ -2126,7 +2128,7 @@ void text19()
 			cout << "No such file at\n  " << path << "\n";
 
 	}
-		
+
 	// counting numbers
 	for (int i = 0; i < s.length(); i++)
 	{
@@ -2236,9 +2238,190 @@ void rows28()
 
 void file6()
 {
-	cout << "This is " << __func__ << " module\n";
 
 	//6)Создать файл из натуральных чисел. В файле натуральных чисел найти наименьший и наибольший общие делители,
 	//также определить все простые числа и их количество. Все простые числа сохранить в другой файл. Предусмотреть
 	//	возможность просмотра содержимого всех файлов
+
+	string path = __FILE__;
+	string directory;
+
+
+	const size_t last_slash_idx = path.rfind('\\');
+	if (std::string::npos != last_slash_idx)
+	{
+		directory = path.substr(0, last_slash_idx);
+	}
+	if (directory.empty())
+	{
+		cout << "Error! No path at\n\t" << path << "\n";
+		pause();
+		return;
+	}
+
+	const string path1 = directory + "\\file1.txt";
+	const string path2 = directory + "\\file2.txt";
+
+	auto print = [](string path)
+	{
+
+		ifstream file(path);
+		string line;
+		if (file.is_open())
+		{
+			while (getline(file, line))
+				cout << line << "\n";
+			file.close();
+			cout << "\n\n";
+		}
+		else
+			cout << "No such file at\n  " << path << "\n";
+
+		pause();
+		cls();
+
+	};
+
+	auto generate = [](string path1, string path2)
+	{
+		bool log = false;
+		fstream text1, text2;
+		vector <int> nums, simples;
+		int max = INT_MIN, min = INT_MAX;
+
+		//create if not exists
+		text1.open(path1, ios::out);
+
+		//write
+		if (text1.is_open())
+		{
+			for (int i = 0; i < 100; i++)
+			{
+				text1 << rand() % 1000 << '\n';
+			}
+		}
+		else
+			cout << "No such file at\n  " << path1 << "\n";
+		text1.close();
+
+		if (log) cout << "text1: Complete\n";
+
+		text1.open(path1, ios::in);
+		if (text1.is_open())
+		{
+			// Parsing all numbers because i'm lazy to write something normal
+			string line;
+
+			while (!text1.eof()) {
+				getline(text1, line);
+				if (line != "\n" && line != "")
+					nums.push_back(stoi(line));
+			}
+		}
+		else
+			cout << "No such file at\n  " << path1 << "\n";
+
+		if (log) cout << "read text1: Complete\n";
+
+		// get max and min
+		for (int i = 0; i < nums.size(); i++)
+		{
+			if (nums[i] > max)
+				max = nums[i];
+			if (nums[i] < min)
+				min = nums[i];
+		}
+
+		if (log) cout << "min max: Complete\n";
+
+		const int n = 1000;
+
+		int a[n + 1];
+		for (int i = 0; i < n + 1; i++)
+			a[i] = i;
+		// getting sieve
+		for (unsigned long int i = 2; i < n + 1; i++)
+		{
+			if (a[i] != 0)
+			{
+				for (unsigned int j = i * i; j < n + 1; j += i)
+					a[j] = 0;
+			}
+		}
+
+		if (log) cout << "simples: Complete\n";
+
+		//create if not exists
+		text2.open(path2, ios::out);
+
+		//write
+		if (text2.is_open())
+		{
+
+			for (int i = 0; i < nums.size(); i++)
+			{
+				if (find(std::begin(a), std::end(a), nums[i]) != std::end(a))
+				{
+					text2 << nums[i] << '\n';
+				}
+			}
+		}
+		else
+			cout << "No such file at\n  " << path2 << "\n";
+		text2.close();
+
+		if (log) cout << "file2: Complete\n";
+
+		cout << "Max number is " << max << "\nMin mnuber is " << min << "\n";
+
+		pause();
+		cls();
+	};
+
+	bool fileLoop = true;
+
+	while (fileLoop)
+	{
+		int choice;
+		cout << "This is " << __func__ << " module\n"
+			<< "Choose operation to perform\n"
+			<< "1. Print 1st file (if exists)\n"
+			<< "2. Print 2nd file (if exists)\n"
+			<< "3. (Re)generate files and print results of file processing\n"
+			<< "0. Exit\n"
+			<< "\n> ";
+		cin >> choice;
+		clear();
+		switch (choice)
+		{
+		case 0:
+		{
+			fileLoop = false;
+			cls();
+			break;
+		}
+		case 1:
+		{
+			cls();
+			print(path1);
+			break;
+		}
+		case 2:
+		{
+			cls();
+			print(path2);
+			break;
+		}
+		case 3:
+		{
+			cls();
+			generate(path1, path2);
+			break;
+		}
+		default:
+			cls();
+			cout << "Sorry, I don't understand. Please choose something else\n";
+			break;
+		}
+	}
 }
