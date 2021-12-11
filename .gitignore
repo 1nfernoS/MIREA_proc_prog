@@ -8,7 +8,7 @@ MIREA_proc_prog/MIREA_proc_prog.vcxproj
 MIREA_proc_prog/MIREA_proc_prog.vcxproj.filters
 MIREA_proc_prog/MIREA_proc_prog.vcxproj.user
 
-MIREA_proc_prog/test.txt
+MIREA_proc_prog/*.txt
 # User-specific files
 *.rsuser
 *.suo
