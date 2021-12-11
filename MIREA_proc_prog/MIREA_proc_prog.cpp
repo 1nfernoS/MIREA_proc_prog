@@ -36,9 +36,10 @@
  |      euclid		-   task for get greatest common divisor               | 
  |      eratosphene -   task for get all simple number to N                | 
  |      text8		-   task for ASCII codes of text file                  |
- |      text19		-   task for task for search the most repeatable char  |
- |      rowsN		-   task for                                           |
- |      rowsY		-   task for                                           |
+ |      text19		-   task for search the most repeatable char           |
+ |      rows13		-   task for find all numbers with sum of digits = m   |
+ |      rows28		-   task for find sum of all digits                    |
+ |      file6		-   task for (nod, nok), and all simples to file       |
  |                                                                         |
  |-------------------------------------------------------------------------|
  |                                                                         |
@@ -98,8 +99,9 @@ void euclid();
 void eratosthenes();
 void text8();
 void text19();
-void rowsN();
-void rowsY();
+void rows13();
+void rows28();
+void file6();
 
 
 void test()
@@ -1836,8 +1838,9 @@ void hw5()
 			<< "2. Sieve of Eratosthenes\n"
 			<< "3. Text prcossing (number 8)\n"
 			<< "4. Text prcossing (number 19)\n"
-			<< "5. Rows (number N)\n"
-			<< "6. Rows (number Y)\n"
+			<< "5. Rows (number 13)\n"
+			<< "6. Rows (number 28)\n"
+			<< "7. File (number 6)\n"
 			<< "0. Back\n"
 			<< "> ";
 		cin >> choice;
@@ -1876,13 +1879,19 @@ void hw5()
 		case 5:
 		{
 			cls();
-			rowsN();
+			rows13();
 			break;
 		}
 		case 6:
 		{
 			cls();
-			rowsY();
+			rows28();
+			break;
+		}
+		case 7:
+		{
+			cls();
+			file6();
 			break;
 		}
 		default:
@@ -2147,14 +2156,89 @@ void text19()
 	cls();
 }
 
-void rowsN()
+void rows13()
 {
 	cout << "This is " << __func__ << " module\n";
+
+	//13) Дано натуральное число m < 27. Получить все трехзначные целые числа, сумма цифр которых равна m(указание:
+	//использовать полный перебор).
+
+	int m;
+
+	do
+	{
+		cout << "Enter m\n> ";
+		cin >> m;
+		clear();
+		if (m <= 0)
+		{
+			cout << "Error! Sum of digits can't be below 0!!!\n";
+			pause();
+			cls();
+		}
+		if (m >= 27)
+		{
+			cout << "Error! Max sum of 3 digits is 27, choose lesser value!\n";
+			pause();
+			cls();
+		}
+	} while (m <= 0 || m >= 27);
+
+	for (int i = 100; i < 999; i++)
+	{
+		if (i / 100 + (i / 10) % 10 + i % 10 == m)
+			cout << i << ' ';
+	}
+	cout << "\n";
+
+	pause();
+	cls();
+
 
 }
 
-void rowsY()
+void rows28()
 {
 	cout << "This is " << __func__ << " module\n";
 
+	//28) Найти сумму цифр целого числа n (водится с клавиатуры).
+
+	unsigned int n; // we dont need negative values
+	unsigned int sum = 0;
+
+
+	do
+	{
+		cout << "Enter n\n> ";
+		cin >> n;
+		clear();
+		if (n < 0)
+		{
+			cout << "Error! Sum of digits can't be below 0!!!\n";
+			pause();
+			cls();
+		}
+	} while (n < 0);
+
+	while (n > 0)
+	{
+		sum += n % 10;
+		n /= 10;
+	}
+
+	cout << "Sum of digits is " << sum << "\n";
+
+	pause();
+	cls();
+
+
+}
+
+void file6()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	//6)Создать файл из натуральных чисел. В файле натуральных чисел найти наименьший и наибольший общие делители,
+	//также определить все простые числа и их количество. Все простые числа сохранить в другой файл. Предусмотреть
+	//	возможность просмотра содержимого всех файлов
 }
