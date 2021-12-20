@@ -10,43 +10,60 @@
 #include <map>
 
 
-/*==========================================================================
- | FUNC:                                                                   |
- |  main            -   interface looped for entering tasks                |
- |                                                                         |
- |  hw1             -   interface for 1st homework (empty)                 |
- |  hw2             -   interface for 2nd homework (empty)                 |
- |  hw3             -   interface for 3rd homework                         |
- |      credit      -   task for calculate month payment for credit        |
- |      percent     -   task for calculate percent of credit               |
- |      print       -   task for print file (source code)                  |
- |      regex       -   task for find numbers in file (source code)        |
- |      sortLetters -   task for sort all symbols in file (source code)    |
- |  hw4	            -   interface for 4th homework                         |
- |      sumFile     -   task for get sum of alol numbers from file         |
- |      sign        -   task for return sign of input num                  |
- |      area        -   task for get area square, triangle, circle         |
- |      flag        -   task for print American flag                       |
- |      sinus       -   task for print graph of sin(x)                     |
- |      romeNumbers -   task for translate rome numbers into arabic        |
- |      lcg         -   task for LCG Pseudo RNG                            |
- |      matrixMult  -   task for multiplying matrix                        |
- |      notation    -   task for translate number into different notation  |
- |  hw5	            -   interface for 5th homework                         |
- |      euclid		-   task for get greatest common divisor               |
- |      eratosphene -   task for get all simple number to N                |
- |      text8		-   task for ASCII codes of text file                  |
- |      text19		-   task for search the most repeatable char           |
- |      rows13		-   task for find all numbers with sum of digits = m   |
- |      rows28		-   task for find sum of all digits                    |
- |      file6		-   task for (nod, nok), and all simples to file       |
- |                                                                         |
- |-------------------------------------------------------------------------|
- |                                                                         |
- |  ignore          -   for clear input                                    |
- |  cls             -   short system("cls")                                |
- |  pause           -   short system("pause")                              |
- ==========================================================================*/
+/*=============================================================================
+ | FUNC:                                                                      |
+ |  main               -   interface looped for entering tasks                |
+ |                                                                            |
+ |  hw1                -   interface for 1st homework                         |
+ |      sayName        -   task that prints your name                         |
+ |      arithmethics   -   task for simple math actions with 2 int            |
+ |      linearEquation -   task for find x from linear equation               |
+ |      squareEquation -   task for solving a square equation                 |
+ |      lampAndCurtain -   task for logical decide is it dark in room         |
+ |  hw2                -   interface for 2nd homework                         |
+ |      cone	       -   task for find S and V of cone                      |
+ |      tree	       -   task for calc one or another function by value     |
+ |      function       -   task for calc function if it exists on that value  |
+ |      order	       -   task for print next 10 int after valuse            |
+ |      tabbing        -   task for tabulating function by step 0.5           |
+ |  hw3                -   interface for 3rd homework                         |
+ |      credit         -   task for calculate month payment for credit        |
+ |      percent        -   task for calculate percent of credit               |
+ |      print          -   task for print file (source code)                  |
+ |      regex          -   task for find numbers in file (source code)        |
+ |      sortLetters    -   task for sort all symbols in file (source code)    |
+ |  hw4	               -   interface for 4th homework                         |
+ |      sumFile        -   task for get sum of alol numbers from file         |
+ |      sign           -   task for return sign of input num                  |
+ |      area           -   task for get area square, triangle, circle         |
+ |      flag           -   task for print American flag                       |
+ |      sinus          -   task for print graph of sin(x)                     |
+ |      romeNumbers    -   task for translate rome numbers into arabic        |
+ |      lcg            -   task for LCG Pseudo RNG                            |
+ |      matrixMult     -   task for multiplying matrix                        |
+ |      notation       -   task for translate number into different notation  |
+ |  hw5                -   interface for 5th homework                         |
+ |      euclid		   -   task for get greatest common divisor               |
+ |      eratosphene    -   task for get all simple number to N                |
+ |      text8		   -   task for ASCII codes of text file                  |
+ |      text19		   -   task for search the most repeatable char           |
+ |      rows13		   -   task for find all numbers with sum of digits = m   |
+ |      rows28		   -   task for find sum of all digits                    |
+ |      file6		   -   task for (nod, nok), and all simples to file       |
+ |  balls              -   task about balls                                   |
+ |  spinners           -   interface for spinners tasks                       |
+ |      spinner1       -   task for count max creatable spinners              |
+ |      spinner2       -   task for count spinners with 3-4 leafs             |
+ |      notSpinner     -   task for count variety of small rectangles         |
+ |      spinnerTrain   -   task for count free space in train                 |
+ |      spinnerCinema  -   task for count free space between students         |
+ |                                                                            |
+ |----------------------------------------------------------------------------|
+ |                                                                            |
+ |  ignore             -   for clear input                                    |
+ |  cls                -   short system("cls")                                |
+ |  pause              -   short system("pause")                              |
+ =============================================================================*/
 
 using namespace std;
 
@@ -54,7 +71,6 @@ using namespace std;
 void cls();
 void pause();
 void clear();
-
 
 
 void hw1();
@@ -103,6 +119,16 @@ void rows13();
 void rows28();
 void file6();
 
+void balls();
+
+void spinners();
+
+void spinner1();
+void spinner2();
+void notSpinner();
+void spinnerTrain();
+void spinnerCinema();
+
 
 void test()
 {
@@ -119,14 +145,13 @@ int main()
 	while (!q)
 	{
 		cout << "This is Gaydenko's homework programming tasks\nChoose homework to check:\n"
-			<< "1. Simple data Handlers (passed)\n"
-			//	<< " - Name\n - Arithmetics\n - Equation\n - Square Equation\n - Lamp, Curveand Sun Question\n"
-			<< "2. Math calculations (passed)\n"
-			//	<< " - Cone\n - Tree Function\n - Function ln\n - 10 Next Numbers\n - Tabulate Function\n"
-			<< "3. File and math processing (passed)\n"
+			<< "1. Simple data Handlers (complete)\n"
+			<< "2. Math calculations (complete)\n"
+			<< "3. File and math processing (complete)\n"
 			<< "4. Files, Drawing and Math again(complete)\n"
 			<< "5. File and math processing (complete)\n"
-			//	<< " - Euclid's Algorythm\n - Sieve Of Eratosthenes\n - Files Handler\n - Rows numbers\n - Files(1)\n"
+			<< "6. Task \"B.A.L.L.S.\"\n"
+			<< "7. Task \"S.P.I.N.N.E.R.S.\"\n"
 			<< "0. Quit\n"
 			<< "> ";
 		cin >> choice;
@@ -181,6 +206,20 @@ int main()
 			cls();
 			break;
 		}
+		case 6:
+		{
+			cls();
+			balls();
+			cls();
+			break;
+		}
+		case 7:
+		{
+			cls();
+			spinners();
+			cls();
+			break;
+		}
 		default:
 			cls();
 			cout << "Sorry, I don't understand. Please choose something else\n";
@@ -208,7 +247,6 @@ void clear()
 
 void hw1()
 {
-
 	bool quitInner = false;
 	int choice;
 	while (!quitInner)
@@ -341,11 +379,8 @@ void squareEquation()
 {
 	cout << "This is " << __func__ << " module\n";
 
-	// coefficients
 	int a, b, c;
 
-
-	// get our operands
 	cout << "Enter a\n> ";
 	cin >> a;
 	clear();
@@ -362,7 +397,6 @@ void squareEquation()
 	cin >> c;
 	clear();
 
-	//calculations
 	int D = (b * b) - (4 * a * c);
 	cout << "D is " << D << "\n";
 
@@ -400,8 +434,6 @@ void lampAndCurtain()
 	clear();
 	lamp = answer == 'y';
 
-
-	// result
 	if (lamp || (day && curtain))
 		cout << "Now is light\n";
 	else
@@ -479,16 +511,21 @@ void cone()
 	cout << "This is " << __func__ << " module\n";
 
 	double V, S, R, r, l, h;
+
 	cout << "Enter h\n> ";
 	cin >> h;
 	clear();
+	
 	cout << "Enter R\n> ";
 	cin >> R;
 	clear();
+	
 	cout << "Enter r\n> ";
 	cin >> r;
 	clear();
+	
 	l = sqrt(h * h + pow((R - r), 2));
+	
 	if ((R != r) and (R > 0 and r > 0 and h > 0 and l > 0))
 	{
 		S = M_PI * (R * R + (R + r) * l + r * r);
@@ -497,9 +534,7 @@ void cone()
 		cout << "V = " << V << "\n";
 	}
 	else
-	{
 		cout << "Wrong data provided\n";
-	}
 
 	pause();
 	cls();
@@ -511,13 +546,17 @@ void tree()
 
 	float w, a, x;
 	int i;
+
 	cout << "Enter a\n> ";
 	cin >> a;
 	clear();
+	
 	cout << "Enter x\n> ";
 	cin >> x;
 	clear();
+	
 	w = 0;
+	
 	if ((abs(x) < 1) and (x != 0))
 		cout << "\n" << "w = " << (w = a * log(abs(x))) << "\n";
 	else
@@ -587,17 +626,19 @@ void tabbing()
 	for (float x = -4.f; x < 4.f; x += 0.5)
 	{
 		if (x == 1)
+		{
 			y = 0;
+			cout << "Doesn't exist\n";
+		}
 		else
+		{
 			y = (x * x - 2 * x + 2) / (x - 1);
-		cout << "Не определено";
-		cout << "x = \t" << x << "\t y = " << y << "\n";
+			cout << "x = \t" << x << "\t y = " << y << "\n";
+		}
 	}
 
 	pause();
 	cls();
-
-
 }
 
 
@@ -701,10 +742,8 @@ void credit()
 	} while (n <= 0);
 
 	r = (p / 100);
-	//cout << "r is " << r << "\n\n";
 
-	m = s * r * pow(r + 1, n);
-	m = m / (12 * (pow(r + 1, n) - 1));
+	m = s * r * pow(r + 1, n) / (12 * (pow(r + 1, n) - 1));
 
 	cout << "Your month pay is " << m << "\n\n";
 
@@ -756,8 +795,7 @@ void percent()
 	{
 		r = (p / 100);
 
-		mTmp1 = s * r * pow(r + 1, n);
-		mTmp1 = mTmp1 / (12 * (pow(r + 1, n) - 1));
+		mTmp1 = s * r * pow(r + 1, n) / (12 * (pow(r + 1, n) - 1));
 
 		if (abs(mTmp1 - m) <= 0.01)
 		{
@@ -765,6 +803,7 @@ void percent()
 			break;
 		}
 	}
+
 	if (found)
 		cout << "Your percent is " << p << "%\n";
 	else
@@ -807,13 +846,10 @@ void regex()
 			string temp;
 			int found;
 
-			//get line into stream
-			ss << line;
+			ss << line; //get line into stream
 			while (!ss.eof()) {
-				//get word from stream (splits by spaces)
-				ss >> temp;
-				// true if got int
-				if (stringstream(temp) >> found)
+				ss >> temp; //get word from stream (splits by spaces)
+				if (stringstream(temp) >> found) // true if got int
 					cout << found << " ";
 				temp = "";
 			}
@@ -821,7 +857,8 @@ void regex()
 		file.close();
 		cout << "\n";
 	}
-	else cout << "No such file at\n  " << path << "\n";
+	else 
+		cout << "No such file at\n  " << path << "\n";
 
 	pause();
 	cls();
@@ -837,11 +874,11 @@ void sortLetters()
 	ifstream file(path);
 	if (file.is_open())
 	{
-		//get all file into string
-		text = string(istreambuf_iterator<char>(file), istreambuf_iterator<char>());
+		text = string(istreambuf_iterator<char>(file), istreambuf_iterator<char>()); //get all file into string
 		file.close();
 	}
-	else cout << "No such file at\n  " << path << "\n";
+	else 
+		cout << "No such file at\n  " << path << "\n";
 
 	cout << "Sorting text of source code, please wait . . .\n";
 	do
@@ -853,9 +890,7 @@ void sortLetters()
 			if (text[i] > text[i + 1])
 			{
 				sorted = false;
-				temp = text[i];
-				text[i] = text[i + 1];
-				text[i + 1] = temp;
+				swap(text[i], text[i + 1]);
 			}
 		}
 	} while (!sorted);
@@ -869,7 +904,6 @@ void sortLetters()
 
 void hw4()
 {
-
 	bool quitInner = false;
 	int choice;
 	while (!quitInner)
@@ -991,13 +1025,9 @@ void sumFile()
 			string temp;
 			int found;
 
-			//get line into stream
 			ss << line;
-
 			while (!ss.eof()) {
-				//get word from stream (splits by spaces)
 				ss >> temp;
-				// true if got int
 				if (stringstream(temp) >> found)
 					nums.push_back(found);
 				temp = "";
@@ -1015,12 +1045,8 @@ void sumFile()
 
 	//write
 	if (text.is_open())
-	{
 		for (int i = 0; i < nums.size(); i++)
-		{
 			text << nums[i] << ' ';
-		}
-	}
 	else
 		cout << "No such file at\n  " << path << "\n";
 	text.close();
@@ -1177,7 +1203,7 @@ void area()
 				}
 			} while (c <= 0);
 
-			if (a + b > c&& a + c > b&& b + c > a)
+			if (a + b > c && a + c > b && b + c > a)
 				cout << "Area of triange with sides " << a << ", " << b << ", " << c << " is " << triangle(a, b, c) << "\n";
 			else
 				cout << "Error! Not existing triangle\n";
@@ -1209,7 +1235,6 @@ void area()
 			break;
 		}
 
-
 		pause();
 		cls();
 	}
@@ -1220,22 +1245,37 @@ void flag()
 {
 	cout << "This is " << __func__ << " module\n";
 
-	// TODO
-	//	Find out how to draw flag properly
-	cout
-		<< "| * * * * * * * * OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
-		<< "| * * * * * * * * :::::::::::::::::::::::::::::::::|\n"
-		<< "| * * * * * * * * OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
-		<< "| * * * * * * * * :::::::::::::::::::::::::::::::::|\n"
-		<< "| * * * * * * * * OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
-		<< "| * * * * * * * * :::::::::::::::::::::::::::::::::|\n"
-		<< "|OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
-		<< "|::::::::::::::::::::::::::::::::::::::::::::::::::|\n"
-		<< "|OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
-		<< "|::::::::::::::::::::::::::::::::::::::::::::::::::|\n"
-		<< "|OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n"
-		<< "|::::::::::::::::::::::::::::::::::::::::::::::::::|\n"
-		<< "|OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|\n";
+	auto underline = [](int i, char c)
+	{
+		for (int j = 0; j < i; j++)
+			cout << c;
+		cout << '\n';
+	};
+
+	auto star = []()
+	{
+		for (int j = 0; j < 8; j++)
+			cout << " * ";
+	};
+
+	int k = 0;
+	for (int j = 0; j < 6; j++)
+	{
+		star();
+		if (k % 2 == 0)
+			underline(32, '0');
+		else
+			underline(32, ':');
+		k++;
+	}
+	for (int j = 0; j < 7; j++)
+	{
+		if (k % 2 == 0)
+			underline(56, '0');
+		else
+			underline(56, ':');
+		k++;
+	}
 
 	pause();
 	cls();
@@ -1959,7 +1999,7 @@ void eratosthenes()
 			pause();
 			cls();
 		}
-		// technically, it can go urther than 2**28, but below 2**29
+		// technically, it can go further than 2**28, but below 2**29
 		if (n > 268435456)
 		{
 			cout << "Error! Size is very big to calculate!\n";
@@ -2424,4 +2464,336 @@ void file6()
 			break;
 		}
 	}
+}
+
+
+int rearr(int Sh[], int len, int n, bool sovp) {
+	bool log = false;
+	if (log)
+	{
+		cout << "perestanovka([";
+		for (int i = 0; i < len; i++)
+		{
+			cout << Sh[i] << ", ";
+		}
+		cout << "], " << len << ", " << n << ", " << sovp << ")\n";
+	}
+	if (n == len)
+	{
+		return sovp;
+	}
+	else {
+		int chet = 0;
+		for (int i = n; i < len; i++)
+		{
+			int* Shn = new int[len];
+			int tmp;
+			for (int i = 0; i < len; i++)
+			{
+				Shn[i] = Sh[i];
+			}
+			for (int j = i; j > 0; j--)
+			{
+				swap(Shn[j], Shn[j - 1]);
+			}
+			chet += rearr(Shn, len, n + 1, sovp + (Sh[i] == n));
+			delete[] Shn;
+		}
+		return chet;
+	}
+}
+void balls()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	// Из урны с 10 пронумерованными шариками вынимают по одному шарику. 
+	// Подсчитать общее количество ситуаций, когда номер хотя бы одного вынутого шарика совпадает с порядковым номером действия "вынимания", например, 
+	// когда шарик № 3 будет вынут 3-им по порядку.
+
+	int len;
+	do
+	{
+		cout << "Enter amount of balls\n> ";
+		cin >> len;
+		clear();
+		if (len <= 0)
+		{
+			cout << "Error! Amount must be greater than 0!\n";
+			pause();
+			cls();
+		}
+	} while (len <= 0);
+
+	int* Sh = new int[len];
+
+	for (int i = 0; i < len; i++) {
+		Sh[i] = i;
+	}
+
+	cout << rearr(Sh, len, 0, 0) << endl;
+	delete[] Sh;
+
+	pause();
+	cls();
+}
+
+
+void spinners()
+{
+	bool quitInner = false;
+	int choice;
+	while (!quitInner)
+	{
+		cout << "This is \"Spinner's\" programming tasks\nChoose task to check:\n"
+			<< "1. Spinners\n"
+			<< "2. Spinners again\n"
+			<< "3. Not about spinners\n"
+			<< "4. Train\n"
+			<< "5. Cinema\n"
+			<< "0. Back\n"
+			<< "> ";
+		cin >> choice;
+		clear();
+		switch (choice)
+		{
+		case 0:
+		{
+			quitInner = true;
+			break;
+		}
+		case 1:
+		{
+			cls();
+			spinner1();
+			break;
+		}
+		case 2:
+		{
+			cls();
+			spinner2();
+			break;
+		}
+		case 3:
+		{
+			cls();
+			notSpinner();
+			break;
+		}
+		case 4:
+		{
+			cls();
+			spinnerTrain();
+			break;
+		}
+		case 5:
+		{
+			cls();
+			spinnerCinema();
+			break;
+		}
+		default:
+			cls();
+			cout << "Sorry, I don't understand. Please choose something else\n";
+			break;
+		}
+	}
+}
+
+void spinner1()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	double a, b, c;
+
+	// This way is just shorter
+	cout << "Price of spinner's base\n> ";
+	cin >> a;
+	while ((cin.fail()) || (a < 1) || (fmod(a, 1) != 0))
+	{
+		clear();
+		cout << "Please, enter a natural number\n> ";
+		cin >> a;
+	}
+
+	cout << "Price of one spinner's blade\n> ";
+	cin >> b;
+	while ((cin.fail()) || (b < 1) || (fmod(a, 1) != 0))
+	{
+		clear();
+		cout << "Please, enter a natural number\n> ";
+		cin >> b;
+	}
+
+	cout << "Max price of a whole spinner\n> ";
+	cin >> c;
+	while ((cin.fail()) || (c < a) || (fmod(a, 1) != 0))
+	{
+		clear();
+		if (c < a)
+			cout << "The price of spinner's base is higher than that of a whole spinner.\nEnter a number >= " << a << "\n> ";
+		else
+			cout << "Please, enter a natural number\n> ";
+		cin >> c;
+	}
+
+	cout << "Result is " << int((c - a) / b) << '\n';
+
+	pause();
+	cls();
+}
+
+void spinner2()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	double m;
+	int s3 = 0, s4 = 0;
+
+	cout << "Enter count of leafs m\n> ";
+	cin >> m;
+	while ((cin.fail()) || (m < 1) || (fmod(m, 1) != 0))
+	{
+		clear();
+		cout << "Please, enter a natural number\n> ";
+		cin >> m;
+	}
+
+	while (m > 0)
+	{
+		m -= 3;
+		s3++;
+		if (fmod(m, 4) == 0)
+		{
+			s4 += m / 4;
+			break;
+		}
+	}
+
+	if ((m >= 0) && (s3 >= 1) && (s4 >= 1))
+		cout << s3 << "\n" << s4;
+	else
+		cout << "0\n0";
+	cout << '\n';
+
+	pause();
+	cls();
+}
+
+void notSpinner()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	string k;
+	int n, m;
+
+	cout << "Enter length of one side of the sheet\n> ";
+	cin >> n;
+	while ((cin.fail()) || (n < 1))
+	{
+		clear();
+		cout << "Please, enter a natural number\n> ";
+		cin >> n;
+	}
+
+	cout << "Enter length of the other side of the sheet\n> ";
+	cin >> m;
+	while ((cin.fail()) || (m < 1))
+	{
+		clear();
+		cout << "Please, enter a natural number\n> ";
+		cin >> m;
+	}
+
+	k = to_string(((n + 1) * (m + 1) * n * m) / 4);
+	cout << k << '\n';
+
+	pause();
+	cls();
+}
+
+void spinnerTrain()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	short int n, number, a[9] = { 0 }, total = 0, out_total = 0;
+
+	cout << "Enter amount of free places n\n> ";
+	cin >> n;
+	while ((cin.fail()) || (n < 0) || (n > 54))
+	{
+		clear();
+		cout << "Wrong input. Try again.\n";
+		cin >> n;
+	}
+	cout << "Enter numbers of a free place\n";
+
+	for (int i = 0; i < n; i++) {
+		cout << "> ";
+		cin >> number;
+		while ((cin.fail()) || (number < 1) || (number > 54))
+		{
+			clear();
+			cout << "Wrong input. Try again.\n> ";
+			cin >> number;
+		}
+		if (number <= 36)
+			a[(number / 4) + bool(number % 4) - 1]++;
+		else
+			a[abs(9 - (((number / 2) + (number % 2)) / 10 + ((number / 2) + (number % 2)) % 10 + 7 * (2 - (((number / 2) + (number % 2)) / 10))))]++;
+	}
+
+	for (int i = 0; i < 9; i++)
+	{
+		if (a[i] >= 6)
+		{
+			total++;
+			out_total = max(total, out_total);
+		}
+		else
+			total = 0;
+	}
+
+	cout << out_total << '\n';
+
+	pause();
+	cls();
+}
+
+void spinnerCinema()
+{
+	cout << "This is " << __func__ << " module\n";
+
+	int n, k;
+	int  nout1, nout2;
+	cout << "Enter amount of places n\n> ";
+	cin >> n;
+	while ((cin.fail()) || (n < 1))
+	{
+		clear();
+		cout << "Wrong input. Try again.\n> ";
+		cin >> n;
+	}
+
+	cout << "Enter amount of pupils k\n> ";
+	cin >> k;
+	while ((cin.fail()) || (k < n))
+	{
+		clear();
+		cout << "Wrong input. Try again.\n> ";
+		cin >> k;
+	}
+
+	while (k != 1)
+	{
+		n = int((n - k % 2) / 2);
+		k = int(k / 2);
+	}
+
+	nout1 = n / 2;
+	nout2 = (n - 1) / 2;
+
+	cout << nout2 << '\n' << nout1 << '\n';
+
+	pause();
+	cls();
 }
